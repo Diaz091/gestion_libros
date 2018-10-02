@@ -10,6 +10,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import sources.Fonts;
+
 
 public class MainMenu extends JFrame {
 
@@ -18,10 +20,7 @@ public class MainMenu extends JFrame {
 	MainMenu(){
 		
 		
-		
-		
-		
-		
+				
 		components();
 		settings();  //Ajustes Generales
 	}
@@ -40,11 +39,9 @@ public class MainMenu extends JFrame {
 	}
 	
 	private void components() {
-		
 		JPanel	panelTitulo = new JPanel( );
 		JLabel	tituloPrincipal = new JLabel( "Gestión de Préstamos de Libros" );
-		Font textFont = new Font("Time New Roman" , Font.ITALIC , 24);
-				tituloPrincipal.setFont( textFont );
+				tituloPrincipal.setFont( Fonts.fontTitle );
 				panelTitulo.setBorder( BorderFactory.createLineBorder( Color.BLACK , 2 ) );
 				panelTitulo.setPreferredSize( new Dimension( 1000 , 45 ) );
 				panelTitulo.add( tituloPrincipal );
@@ -53,7 +50,18 @@ public class MainMenu extends JFrame {
 		
 		
 		JPanel	panelOpciones = new JPanel( );
+				panelOpciones.setBorder( BorderFactory.createLineBorder( Color.BLACK , 2 ) );
+				panelOpciones.setPreferredSize( new Dimension( 550 , 700 ) );
 		
+		JPanel	panelTituloOpciones = new JPanel( );
+		JLabel	tituloSecundario = new JLabel( "Menú Principal" );
+				panelOpciones.setBorder( BorderFactory.createLineBorder( Color.BLACK , 2 ) );
+				tituloSecundario.setFont( Fonts.fontTitle );
+				panelOpciones.setBorder( BorderFactory.createLineBorder( Color.BLACK , 2 ) );
+				
+				
+				
+		this.getContentPane().add( panelOpciones );
 	}
 	
 	
@@ -64,7 +72,7 @@ public class MainMenu extends JFrame {
 	
 	
 	
-	
+	 
 	
 	
 	

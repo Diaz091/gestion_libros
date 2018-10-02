@@ -29,28 +29,28 @@ public class Prueba extends JFrame{
 			pn.setBorder(BorderFactory.createLineBorder(Color.black));
 			pn.setPreferredSize(new Dimension(1000, 500));
 			pn.setVisible(false);
-		JLabel lbl = new JLabel(new ImageIcon("1.png"));
+		JLabel lbl = new JLabel(new ImageIcon("img\\1.png"));
 		pn.add(lbl);
 		
 		pn2 = new JPanel();
 			pn2.setBorder(BorderFactory.createLineBorder(Color.black));
 			pn2.setPreferredSize(new Dimension(1000, 500));
 			pn2.setVisible(false);
-		JLabel lb2 = new JLabel(new ImageIcon("Interfaz 1.png"));
+		JLabel lb2 = new JLabel(new ImageIcon("img\\Interfaz 1.png"));
 			pn2.add(lb2);
 		
 			pn3 = new JPanel();
 			pn3.setBorder(BorderFactory.createLineBorder(Color.black));
 			pn3.setPreferredSize(new Dimension(1000, 500));
 			pn3.setVisible(false);
-		JLabel lb3 = new JLabel(new ImageIcon("Interfaz 2.0.png"));
+		JLabel lb3 = new JLabel(new ImageIcon("img\\Interfaz 2.0.png"));
 			pn3.add(lb3);
 			
 			pn4 = new JPanel();
 			pn4.setBorder(BorderFactory.createLineBorder(Color.black));
 			pn4.setPreferredSize(new Dimension(1000, 500));
 			pn4.setVisible(false);
-		JLabel lb4 = new JLabel(new ImageIcon("amp.png"));
+		JLabel lb4 = new JLabel(new ImageIcon("img\\amp.png"));
 			pn4.add(lb4);
 		
 			
