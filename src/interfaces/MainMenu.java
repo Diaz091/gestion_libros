@@ -59,7 +59,7 @@ public class MainMenu extends JFrame {
 				tituloSecundario.setFont( Fonts.fontTitle );
 				panelOpciones.setBorder( BorderFactory.createLineBorder( Color.BLACK , 2 ) );
 				
-				
+				panelOpciones.add( tituloSecundario );
 				
 		this.getContentPane().add( panelOpciones );
 	}
