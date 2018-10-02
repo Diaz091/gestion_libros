@@ -1,1 +1,8 @@
 bin/
+. 
+.. 
+.classpath 
+.git 
+.gitignore 
+.project 
+.settings
