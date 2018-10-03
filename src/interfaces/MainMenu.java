@@ -81,18 +81,13 @@ public class MainMenu extends JFrame {
 						tituloAlumno.setBorder( BorderFactory.createLineBorder( Color.ORANGE , 2 ) );
 						tituloAlumno.setPreferredSize( new Dimension( 425 , 36 ) );
 				
-				// TIENEN QUE DESAPARECER :) 
-				JPanel	noQuieroHacerlo = new JPanel();
-						noQuieroHacerlo.add(botonAlumnos);
-						noQuieroHacerlo.add(tituloAlumno);
 				
-						panelOpciones.add(noQuieroHacerlo);
-						
-						//panelOpciones.add( botonAlumnos );
-						//panelOpciones.add( tituloAlumno );
+				JPanel	opcion = new JPanel();
+						opcion.add( botonAlumnos );
+						opcion.add( tituloAlumno );
 				
-			
-				
+						panelOpciones.add(opcion);
+							
 		// - panelOpciones | 2do Boton + Etiqueta para Libros
 				botonLibros = new JButton( new ImageIcon( "img\\alumIco.png" ) );
 				botonLibros.setBackground(Color.lightGray);
@@ -102,12 +97,12 @@ public class MainMenu extends JFrame {
 						tituloLibro.setFont( Fonts.fontTitle );
 						tituloLibro.setBorder( BorderFactory.createLineBorder( Color.ORANGE , 2 ) );
 						tituloLibro.setPreferredSize( new Dimension( 425 , 36 ) );
-				// TIENEN QUE DESAPARECER :) 
-				JPanel	noQuieroHacerlo2 = new JPanel();
-						noQuieroHacerlo2.add(botonLibros);
-						noQuieroHacerlo2.add(tituloLibro);
-						
-			 panelOpciones.add( noQuieroHacerlo2 );
+			
+				JPanel	opcion2 = new JPanel();
+						opcion2.add( botonLibros );
+						opcion2.add( tituloLibro );
+					
+			 panelOpciones.add( opcion2 );
 				
 		// - panelOpciones | 3er Boton + Etiqueta para Prestamos
 				botonPrestamos = new JButton( new ImageIcon( "img\\alumIco.png" ) );
@@ -118,12 +113,12 @@ public class MainMenu extends JFrame {
 						tituloPrestamos.setFont( Fonts.fontTitle );
 						tituloPrestamos.setBorder( BorderFactory.createLineBorder( Color.ORANGE , 2 ) );
 						tituloPrestamos.setPreferredSize( new Dimension( 425 , 36 ) );
-				// TIENEN QUE DESAPARECER :) 
-				JPanel	noQuieroHacerlo3 = new JPanel();
-						noQuieroHacerlo3.add(botonPrestamos);
-						noQuieroHacerlo3.add(tituloPrestamos);
+				
+				JPanel	opcion3 = new JPanel();
+						opcion3.add(botonPrestamos);
+						opcion3.add(tituloPrestamos);
 						
-				panelOpciones.add( noQuieroHacerlo3 );		
+				panelOpciones.add( opcion3 );		
 					
 				
 				
@@ -136,12 +131,12 @@ public class MainMenu extends JFrame {
 						tituloDevoluciones.setFont( Fonts.fontTitle );
 						tituloDevoluciones.setBorder( BorderFactory.createLineBorder( Color.ORANGE , 2 ) );
 						tituloDevoluciones.setPreferredSize( new Dimension( 425 , 36 ) );
-				// TIENEN QUE DESAPARECER :) 
-				JPanel	noQuieroHacerlo4 = new JPanel();
-						noQuieroHacerlo4.add(botonDevoluciones);
-						noQuieroHacerlo4.add(tituloDevoluciones);
+			
+				JPanel	opcion4 = new JPanel();
+						opcion4.add( botonDevoluciones );
+						opcion4.add( tituloDevoluciones );
 						
-				panelOpciones.add( noQuieroHacerlo4 );		
+				panelOpciones.add( opcion4 );		
 				
 		// - panelOpciones | 5to Boton + Etiqueta para Listas
 				botonLista = new JButton( new ImageIcon( "img\\alumIco.png" ) );
@@ -152,17 +147,17 @@ public class MainMenu extends JFrame {
 						tituloListas.setFont( Fonts.fontTitle );
 						tituloListas.setBorder( BorderFactory.createLineBorder( Color.ORANGE , 2 ) );
 						tituloListas.setPreferredSize( new Dimension( 425 , 36 ) );
-				// TIENEN QUE DESAPARECER :) 
-				JPanel	noQuieroHacerlo5 = new JPanel();
-						noQuieroHacerlo5.add(botonLista);
-						noQuieroHacerlo5.add(tituloListas);
+				
+				JPanel	opcion5 = new JPanel();
+						opcion5.add( botonLista );
+						opcion5.add( tituloListas );
 						
-				panelOpciones.add( noQuieroHacerlo5 );	
+				panelOpciones.add( opcion5 );	
 				
 			
 							
 				
-		// - panelOpciones | 5to Boton + Etiqueta para Listas
+		// - panelOpciones | 6to Boton + Etiqueta para Otros..
 				botonOtros = new JButton( new ImageIcon( "img\\alumIco.png" ) );
 				botonOtros.setBackground(Color.lightGray);
 				botonOtros.setBorder( BorderFactory.createLineBorder( Color.ORANGE , 2 ) );
@@ -171,16 +166,17 @@ public class MainMenu extends JFrame {
 						tituloOtros.setFont( Fonts.fontTitle );
 						tituloOtros.setBorder( BorderFactory.createLineBorder( Color.ORANGE , 2 ) );
 						tituloOtros.setPreferredSize( new Dimension( 425 , 36 ) );
-				// TIENEN QUE DESAPARECER :) 
-				JPanel	noQuieroHacerlo6 = new JPanel();
-						noQuieroHacerlo6.add(botonOtros);
-						noQuieroHacerlo6.add(tituloOtros);
+			
+				JPanel	opcion6 = new JPanel();
+					opcion6.add( botonOtros );
+					opcion6.add( tituloOtros );
 						
-				panelOpciones.add( noQuieroHacerlo6 );	
+				panelOpciones.add( opcion6 );	
 				panelMenuSecundario.add( panelOpciones );
-		JLabel	imagen = new JLabel( new ImageIcon("img\\book.png") );
-				imagen.setBorder(BorderFactory.createEmptyBorder(0, 120, 0, 0));
-			//	imagen.setBorder( BorderFactory.createLineBorder( Color.ORANGE , 2 ) );
+				
+		JLabel	imagen = new JLabel( new ImageIcon( "img\\book.png" ) );
+				imagen.setBorder( BorderFactory.createEmptyBorder( 0 , 120 , 0 , 0 ) );
+		
 				
 		//JPanel pnSaludo = new JPanel();	
 		//JLabel saludo = new JLabel ("Bienvenido/a  ");
