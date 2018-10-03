@@ -20,6 +20,8 @@ public class Login extends JFrame{
 		
 		this.setSize(250, 250);
 		this.setVisible(true);
+		this.setResizable(false);
+		this.setLocationRelativeTo(null);
 		this.setLayout(new BoxLayout(this.getContentPane(), BoxLayout.X_AXIS));
 		
 	}
@@ -27,12 +29,14 @@ public class Login extends JFrame{
 		private void dibujar() {
 		
 		login = new JButton(" LOGIN ");
+		login.setFocusable(false);
 		login.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
 				 new MainMenu();
+				 
 				 dispose();
 				
 			}

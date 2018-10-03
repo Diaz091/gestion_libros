@@ -19,6 +19,7 @@ import sources.Fonts;
 public class MainMenu extends JFrame {
 		
 		private JButton botonAlumnos , botonLibros, botonPrestamos, botonDevoluciones, botonLista, botonOtros, botonSalir;	
+		private JLabel	bienvenida;
 	
 	MainMenu(){
 		
@@ -33,6 +34,7 @@ public class MainMenu extends JFrame {
 		this.setDefaultCloseOperation( DISPOSE_ON_CLOSE );
 		this.setTitle( "Gestor de Préstamos de Libros" );
 		this.setLayout( new FlowLayout( ) );
+		this.setLocationRelativeTo(null);
 		this.setResizable( false );
 		this.setSize( 1300, 775 );
 		this.setVisible( true );
@@ -179,7 +181,7 @@ public class MainMenu extends JFrame {
 				JLabel	imagen  = new JLabel( new ImageIcon( "img\\book.png" ) );
 						imagen.setBorder( BorderFactory.createEmptyBorder( 85 , 0 , 120 , 55 ) );
 						
-				JLabel	bienvenida = new JLabel( "Bienvenido/a: ");
+						bienvenida = new JLabel( "Bienvenido/a: ");
 						bienvenida.setFont( Fonts.fontTitle );
 						bienvenida.setBorder( BorderFactory.createEmptyBorder(0 , 10 , 0 , 30 ) );
 					
@@ -198,13 +200,12 @@ public class MainMenu extends JFrame {
 			this.getContentPane().add( pnSaludo );
 			 
 	}
-	
-	
-	
-	
+
+
+	/*
 	public static void main(String[] args) {
 		new MainMenu();
 
-	}
+	}*/
 
 }
