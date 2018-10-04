@@ -34,9 +34,9 @@ public class MainMenu extends JFrame {
 		this.setDefaultCloseOperation( DISPOSE_ON_CLOSE );
 		this.setTitle( "Gestor de Préstamos de Libros" );
 		this.setLayout( new FlowLayout( ) );
-		this.setLocationRelativeTo(null);
 		this.setResizable( false );
 		this.setSize( 1300, 775 );
+		this.setLocationRelativeTo(null);
 		this.setVisible( true );
 	}
 	
@@ -200,12 +200,5 @@ public class MainMenu extends JFrame {
 			this.getContentPane().add( pnSaludo );
 			 
 	}
-
-
-	/*
-	public static void main(String[] args) {
-		new MainMenu();
-
-	}*/
 
 }
