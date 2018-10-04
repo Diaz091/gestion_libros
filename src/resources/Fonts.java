@@ -1,4 +1,4 @@
-package sources;
+package resources;
 
 import java.awt.Font;
 

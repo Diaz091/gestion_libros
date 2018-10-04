@@ -39,8 +39,8 @@ public class LoginControler implements ActionListener{
 			try {
 				
 				Class.forName( "com.mysql.cj.jdbc.Driver" ).newInstance();
-				Connection	conMysql = DriverManager.getConnection( "jdbc:mysql://localhost:3306/gestion_libros?user=root&password=tiger&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC");
-				
+				String conexion = "jdbc:mysql://localhost:3306/gestion_libros?user=root&password=tiger&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
+				Connection	conMysql = DriverManager.getConnection( conexion );
 				PreparedStatement ps = conMysql.prepareStatement( "Select nombre, apellido from users where id = ?" );
 					ps.setString(1, id );
 				ResultSet rs = ps.executeQuery();
@@ -56,14 +56,14 @@ public class LoginControler implements ActionListener{
 				conMysql.close();
 				log.dispose();
 				
-			} catch (InstantiationException e1) {
+			} catch ( InstantiationException e1 ) {
 				e1.printStackTrace();
-			} catch (IllegalAccessException e1) {
-				e1.printStackTrace();
-			} catch (ClassNotFoundException e2) {
+			} catch ( IllegalAccessException e2 ) {
 				e2.printStackTrace();
-			} catch (SQLException e3) {
+			} catch ( ClassNotFoundException e3 ) {
 				e3.printStackTrace();
+			} catch ( SQLException e4 ) {
+				e4.printStackTrace();
 			}
 			 
 			 	

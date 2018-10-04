@@ -1,24 +1,29 @@
 package interfaces;
 
 import java.awt.Color;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
 
 import javax.swing.BorderFactory;
-import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import javax.swing.border.Border;
-import javax.swing.border.TitledBorder;
+import javax.swing.border.BevelBorder;
+import javax.swing.text.Highlighter.Highlight;
 
 import controlers.LoginControler;
 
+
 public class Login extends JFrame{
 	
+	private static final long serialVersionUID = 7432826939820483800L;
+	/**
+	 * 
+	 */
 	private JButton login;
-	private JTextField txt;
+	private JTextField textoID;
 	
 		 Login(){
 			dibujar();
@@ -28,32 +33,37 @@ public class Login extends JFrame{
 		private void settings() {
 			
 			this.setDefaultCloseOperation( DISPOSE_ON_CLOSE );
-			this.setSize(350, 250);
+			this.setSize(450, 350);
 			this.setLocationRelativeTo(null);
 			this.setResizable(false);
-			this.setLayout(new BoxLayout(this.getContentPane(), BoxLayout.X_AXIS));
+			this.setLayout( new FlowLayout() );
+			
 			this.setVisible(true);
 		}
+		
 		private void dibujar() {
-			JPanel panelLogin = new JPanel();
-			Border line = BorderFactory.createLineBorder(Color.BLACK);
-			
-				panelLogin.setBorder(BorderFactory.createTitledBorder(line, "Hey",TitledBorder.DEFAULT_JUSTIFICATION , TitledBorder.ABOVE_TOP));
-					login = new JButton(" LOGIN ");
-					login.setFocusable(false);
-					txt = new JTextField(10);
-					LoginControler lc = new LoginControler(this);
-					login.addActionListener(lc);
+			JLabel	titulo = new JLabel( "Título Radiánte  " );
+					titulo.setBorder( BorderFactory.createBevelBorder(BevelBorder.LOWERED, Color.BLUE, Color.RED));
+			JPanel	panelLogin = new JPanel();
+					panelLogin.setPreferredSize( new Dimension( 350 , 250 ) );
+					panelLogin.setBackground( Color.BLUE );
+			/*		
+				login = new JButton(" Login ");
+				login.setFocusable(false);
+				textoID = new JTextField(10);
+				LoginControler lc = new LoginControler(this);
+				login.addActionListener(lc);
 					
-					panelLogin.add( txt );
-					panelLogin.add( login );
-					
-			this.getContentPane().add(panelLogin);
+				panelLogin.add( textoID );
+				panelLogin.add( login );
+				*/	
+			this.getContentPane().add( titulo );
+			this.getContentPane().add( panelLogin );
 		
 	}
 		
 		public JTextField getTxt() {
-			return txt;
+			return textoID;
 		}
 
 		
