@@ -21,9 +21,9 @@ public class MainMenu extends JFrame {
 		private JButton botonAlumnos , botonLibros, botonPrestamos, botonDevoluciones, botonLista, botonOtros, botonSalir;	
 		private JLabel	bienvenida;
 	
-	MainMenu(){
+	public MainMenu(){
 		
-		components();
+		components(); 
 		settings();  //Ajustes Generales
 		
 	}
@@ -35,7 +35,7 @@ public class MainMenu extends JFrame {
 		this.setTitle( "Gestor de Préstamos de Libros" );
 		this.setLayout( new FlowLayout( ) );
 		this.setResizable( false );
-		this.setSize( 1300, 775 );
+		this.setSize( 1300, 705 );
 		this.setLocationRelativeTo(null);
 		this.setVisible( true );
 	}
@@ -49,11 +49,12 @@ public class MainMenu extends JFrame {
 				panelTitulo.setPreferredSize( new Dimension( 1250 , 45 ) );
 				panelTitulo.add( tituloPrincipal );
 				
-		this.getContentPane().add( panelTitulo );
+				this.getContentPane().add( panelTitulo );
 		
 		// - panelMenuSecundario | Borde más exterior del Menú Principal. 
 		JPanel	panelMenuSecundario = new JPanel( );
-				panelMenuSecundario.setPreferredSize( new Dimension( 550 , 663 ) );
+				//panelMenuSecundario.setPreferredSize( new Dimension( 550 , 663 ) );
+				panelMenuSecundario.setPreferredSize( new Dimension( 550 , 584 ) );
 				this.getContentPane().add( panelMenuSecundario );
 			
 		// - panelTituloOpciones | Borde del Titulo (Menú Principal).
@@ -179,7 +180,7 @@ public class MainMenu extends JFrame {
 				JPanel	pnSaludo = new JPanel();	
 						pnSaludo.setLayout(new BoxLayout(pnSaludo, BoxLayout.Y_AXIS));
 				JLabel	imagen  = new JLabel( new ImageIcon( "img\\book.png" ) );
-						imagen.setBorder( BorderFactory.createEmptyBorder( 85 , 0 , 120 , 55 ) );
+						imagen.setBorder( BorderFactory.createEmptyBorder( 75 , 0 , 79 , 55 ) );
 						
 						bienvenida = new JLabel( "Bienvenido/a: ");
 						bienvenida.setFont( Fonts.fontTitle );
@@ -200,5 +201,15 @@ public class MainMenu extends JFrame {
 			this.getContentPane().add( pnSaludo );
 			 
 	}
+
+	
+	public JLabel getBienvenida() {
+		return bienvenida;
+	}
+
+
+	
+	
+	
 
 }

@@ -23,7 +23,6 @@ public class Login extends JFrame{
 		 Login(){
 			dibujar();
 			settings();
-			
 		}
 	
 		private void settings() {
@@ -48,7 +47,7 @@ public class Login extends JFrame{
 					
 					panelLogin.add( txt );
 					panelLogin.add( login );
-		
+					
 			this.getContentPane().add(panelLogin);
 		
 	}
