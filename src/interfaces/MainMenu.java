@@ -14,6 +14,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import controllers.StudentController;
 import resources.Fonts;
 
 public class MainMenu extends JFrame {
@@ -25,7 +26,6 @@ public class MainMenu extends JFrame {
 		private JLabel	bienvenida;
 	
 		public MainMenu(){
-			
 			components(); 
 			settings();  //Ajustes Generales
 			
@@ -89,6 +89,13 @@ public class MainMenu extends JFrame {
 							botonAlumnos.setBackground( Color.lightGray );
 							botonAlumnos.setBorder( BorderFactory.createLineBorder( Color.BLACK , 2 ) );
 				
+							
+							// Listener Para el BotonAlumnos, el cual abrira BookManager. 
+							// El cual se encargade gestionar los alumnos.
+							
+							StudentController stC = new StudentController(this);
+							botonAlumnos.addActionListener(stC);
+							
 							JLabel	tituloAlumno = new JLabel( "  Gestión de Alumnos" );
 									tituloAlumno.setFont( Fonts.fontTitle );
 									tituloAlumno.setBorder( BorderFactory.createLineBorder( Color.BLACK , 2 ) );

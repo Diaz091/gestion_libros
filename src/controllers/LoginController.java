@@ -1,4 +1,4 @@
-package controlers;
+package controllers;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -13,18 +13,18 @@ import javax.swing.JOptionPane;
 import interfaces.Login;
 import interfaces.MainMenu;
 
-public class LoginControler implements ActionListener{
+public class LoginController implements ActionListener{
 
 	private Login log;
 	private MainMenu main;
 	
-	public LoginControler( Login lo , MainMenu ma ){
+	public LoginController( Login lo , MainMenu ma ){
 		
 		this.log = lo;
 		this.main =ma;
 	}
 	
-	public LoginControler( Login lo ){
+	public LoginController( Login lo ){
 		
 		this.log = lo;
 		
