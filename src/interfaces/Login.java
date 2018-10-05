@@ -1,10 +1,10 @@
 package interfaces;
 
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.FlowLayout;
 
-import javax.swing.BorderFactory;
+import java.awt.Dimension;
+
+
+
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -12,12 +12,11 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import javax.swing.border.BevelBorder;
-import javax.swing.text.Highlighter.Highlight;
 
-//import controllers.LoginController;
+
+import controllers.LoginController;
 import resources.Fonts;
-//import resources.Image;
+
 
 
 public class Login extends JFrame{

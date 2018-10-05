@@ -1,9 +1,18 @@
 package resources;
 
 import javax.swing.BorderFactory;
+import javax.swing.border.EtchedBorder;
 
-public final class Border {
+public class Border {
 
-
+	public  Border() {
+		
+		Border[] border = new Border[] { (Border) BorderFactory.createEtchedBorder(EtchedBorder.LOWERED)
+				
+				
+				
+		};
+	}
+	
 
 }
