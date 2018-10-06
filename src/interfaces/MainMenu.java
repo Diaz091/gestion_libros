@@ -61,7 +61,7 @@ public class MainMenu extends JFrame {
 					panelTitulo.setBackground( Colors.transparent );
 			JLabel	tituloPrincipal = new JLabel( "Gestión de Préstamos de Libros" );
 					tituloPrincipal.setFont( Fonts.fontTitle );
-					panelTitulo.setBorder( BorderFactory.createLineBorder( Color.BLACK , 2 ) );
+					panelTitulo.setBorder( BorderFactory.createLineBorder( Colors.borderColor , 2 ) );
 					panelTitulo.setPreferredSize( new Dimension( 1250 , 45 ) );
 					panelTitulo.add( tituloPrincipal );
 					
@@ -75,12 +75,12 @@ public class MainMenu extends JFrame {
 					JPanel	panelMenuSecundario = new JPanel( );
 							panelMenuSecundario.setBackground( Colors.transparent );
 							panelMenuSecundario.setPreferredSize( new Dimension( 550 , 584 ) );
-							panelMenuSecundario.setBorder( BorderFactory.createLineBorder( Color.BLACK , 2 ) );
+						//	panelMenuSecundario.setBorder( BorderFactory.createLineBorder( Color.BLACK , 2 ) );
 							this.getContentPane().add( panelMenuSecundario );
 						
 					// - panelTituloOpciones | Borde del Titulo (Menú Principal).
 					JPanel	panelTituloOpciones = new JPanel( );
-							panelTituloOpciones.setBackground( Colors.transparent );
+							panelTituloOpciones.setBackground( Colors.transparentShy );
 					JLabel	tituloSecundario = new JLabel( "Menú Principal" , JLabel.CENTER );
 							tituloSecundario.setFont( Fonts.fontTitle );
 							tituloSecundario.setPreferredSize( new Dimension( 490 , 36 ) );
@@ -89,9 +89,9 @@ public class MainMenu extends JFrame {
 							panelMenuSecundario.add( tituloSecundario );
 							
 							
-					// - panelOpciones | 1er Boton + Etiqueta para Alumnos
+					// - panelOpciones | 
 					JPanel	panelOpciones = new JPanel( );
-							panelOpciones.setBackground( Colors.transparent );
+							panelOpciones.setBackground( Colors.transparentShy );
 							panelOpciones.add(Box.createRigidArea( new Dimension( 0 , 20 ) ) );
 							panelOpciones.setLayout(new BoxLayout(panelOpciones, BoxLayout.Y_AXIS));
 							
@@ -106,7 +106,8 @@ public class MainMenu extends JFrame {
 							
 							StudentController stC = new StudentController(this);
 							botonAlumnos.addActionListener(stC);
-							
+
+					// - panelOpciones | 1er Boton + Etiqueta para Alumnos		
 							JLabel	tituloAlumno = new JLabel( "  Gestión de Alumnos" );
 									tituloAlumno.setFont( Fonts.fontTitle );
 									tituloAlumno.setBorder( BorderFactory.createLineBorder( Color.BLACK , 2 ) );
