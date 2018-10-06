@@ -2,8 +2,7 @@ package resources;
 
 import java.awt.Dimension;
 import java.awt.Graphics;
-
-
+import java.awt.Image;
 import java.io.File;
 import java.io.IOException;
 
@@ -11,16 +10,16 @@ import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
 
-public class Image extends JPanel {
+public class ImageTest extends JPanel {
 
 	private static final long serialVersionUID = -5565366612220978314L;
 	
-	private java.awt.Image img;
+	private Image img;
 	
 	
-	public Image(String url) {
+	public ImageTest(String url) {
 		 try {
-			img = ImageIO.read( new File(url ) );
+			img = ImageIO.read( new File( url ) );
 			
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -28,12 +27,13 @@ public class Image extends JPanel {
 		
 	}
 	
-	public void paintImage(Graphics g) {
+	public void paintComponent(Graphics g) {
 		
 		Dimension tamanio = getSize();
 		
-		g.drawImage(img, 0, 0, tamanio.width, tamanio.height, null);
 		super.paintComponent(g);
+		g.drawImage(img, 0, 0, tamanio.width, tamanio.height, null);
+		
 		
 	}
 

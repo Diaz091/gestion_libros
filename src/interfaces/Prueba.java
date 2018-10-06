@@ -13,7 +13,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import resources.Image;
+import resources.ImageTest;
 
 
 public class Prueba extends JFrame{
@@ -26,11 +26,13 @@ public class Prueba extends JFrame{
 		
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		
+			
 		
 		pn = new JPanel();
 			pn.setBorder(BorderFactory.createLineBorder(Color.black));
 			pn.setPreferredSize(new Dimension(1000, 400));
 			pn.setVisible(false);
+		
 		JLabel lbl = new JLabel(new ImageIcon("img\\1.png"));
 		pn.add(lbl);
 		

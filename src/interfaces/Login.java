@@ -1,6 +1,7 @@
 package interfaces;
 
 
+import java.awt.Color;
 import java.awt.Dimension;
 
 
@@ -16,6 +17,7 @@ import javax.swing.JTextField;
 
 import controllers.LoginController;
 import resources.Fonts;
+import resources.ImageTest;
 
 
 
@@ -30,6 +32,7 @@ public class Login extends JFrame{
 	
 	
 		 Login(){
+			 		 
 			dibujar();
 			settings();
 		}

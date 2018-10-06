@@ -15,7 +15,10 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import controllers.StudentController;
+import resources.Colors;
 import resources.Fonts;
+import resources.ImageTest;
+
 
 public class MainMenu extends JFrame {
 		private static final long serialVersionUID = 5190669415336856587L;
@@ -26,6 +29,9 @@ public class MainMenu extends JFrame {
 		private JLabel	bienvenida;
 	
 		public MainMenu(){
+			ImageTest img = new ImageTest("img/imagen.png");
+			this.setContentPane(img);
+			
 			components(); 
 			settings();  //Ajustes Generales
 			
@@ -49,9 +55,10 @@ public class MainMenu extends JFrame {
 			
 				 
 		}
-	
+
 		private void dibujarPanel() {
 			JPanel	panelTitulo = new JPanel( );
+					panelTitulo.setBackground( Colors.transparent );
 			JLabel	tituloPrincipal = new JLabel( "Gestión de Préstamos de Libros" );
 					tituloPrincipal.setFont( Fonts.fontTitle );
 					panelTitulo.setBorder( BorderFactory.createLineBorder( Color.BLACK , 2 ) );
@@ -60,20 +67,22 @@ public class MainMenu extends JFrame {
 					
 					this.getContentPane().add( panelTitulo );
 		}
+	
 		
 		private void dibujarPanelPrincipal() {
 			// - panelMenuSecundario | Borde más exterior del Menú Principal. 
+				 
 					JPanel	panelMenuSecundario = new JPanel( );
-							//panelMenuSecundario.setPreferredSize( new Dimension( 550 , 663 ) );
+							panelMenuSecundario.setBackground( Colors.transparent );
 							panelMenuSecundario.setPreferredSize( new Dimension( 550 , 584 ) );
+							panelMenuSecundario.setBorder( BorderFactory.createLineBorder( Color.BLACK , 2 ) );
 							this.getContentPane().add( panelMenuSecundario );
 						
 					// - panelTituloOpciones | Borde del Titulo (Menú Principal).
 					JPanel	panelTituloOpciones = new JPanel( );
+							panelTituloOpciones.setBackground( Colors.transparent );
 					JLabel	tituloSecundario = new JLabel( "Menú Principal" , JLabel.CENTER );
-							panelMenuSecundario.setBorder( BorderFactory.createLineBorder( Color.BLACK , 2 ) );
 							tituloSecundario.setFont( Fonts.fontTitle );
-							
 							tituloSecundario.setPreferredSize( new Dimension( 490 , 36 ) );
 							tituloSecundario.setBorder( BorderFactory.createLineBorder( Color.BLACK , 2 ) );
 							panelTituloOpciones.setPreferredSize( new Dimension( 500 , 45 ) );
@@ -82,8 +91,10 @@ public class MainMenu extends JFrame {
 							
 					// - panelOpciones | 1er Boton + Etiqueta para Alumnos
 					JPanel	panelOpciones = new JPanel( );
-							panelOpciones.setLayout(new BoxLayout(panelOpciones, BoxLayout.Y_AXIS));
+							panelOpciones.setBackground( Colors.transparent );
 							panelOpciones.add(Box.createRigidArea( new Dimension( 0 , 20 ) ) );
+							panelOpciones.setLayout(new BoxLayout(panelOpciones, BoxLayout.Y_AXIS));
+							
 							
 							botonAlumnos = new JButton( new ImageIcon( "img\\alumIco.png" ) );
 							botonAlumnos.setBackground( Color.lightGray );
@@ -103,6 +114,7 @@ public class MainMenu extends JFrame {
 							
 							
 							JPanel	opcion = new JPanel();
+									opcion.setBackground( Colors.transparent );
 									opcion.add( botonAlumnos );
 									opcion.add( tituloAlumno );
 							
@@ -120,6 +132,7 @@ public class MainMenu extends JFrame {
 									tituloLibro.setPreferredSize( new Dimension( 425 , 36 ) );
 						
 							JPanel	opcion2 = new JPanel();
+									opcion2.setBackground( Colors.transparent );
 									opcion2.add( botonLibros );
 									opcion2.add( tituloLibro );
 								
@@ -137,6 +150,7 @@ public class MainMenu extends JFrame {
 									tituloPrestamos.setPreferredSize( new Dimension( 425 , 36 ) );
 							
 							JPanel	opcion3 = new JPanel();
+									opcion3.setBackground( Colors.transparent );
 									opcion3.add( botonPrestamos );
 									opcion3.add( tituloPrestamos );
 									
@@ -154,6 +168,7 @@ public class MainMenu extends JFrame {
 									tituloDevoluciones.setPreferredSize( new Dimension( 425 , 36 ) );
 						
 							JPanel	opcion4 = new JPanel();
+									opcion4.setBackground( Colors.transparent );
 									opcion4.add( botonDevoluciones );
 									opcion4.add( tituloDevoluciones );
 									
@@ -171,6 +186,7 @@ public class MainMenu extends JFrame {
 									tituloListas.setPreferredSize( new Dimension( 425 , 36 ) );
 							
 							JPanel	opcion5 = new JPanel();
+									opcion5.setBackground( Colors.transparent );
 									opcion5.add( botonLista );
 									opcion5.add( tituloListas );
 									
@@ -188,12 +204,19 @@ public class MainMenu extends JFrame {
 									tituloOtros.setPreferredSize( new Dimension( 425 , 36 ) );
 						
 							JPanel	opcion6 = new JPanel();
-								opcion6.add( botonOtros );
-								opcion6.add( tituloOtros );
+									opcion6.setBackground( Colors.transparent );
+									opcion6.add( botonOtros );
+									opcion6.add( tituloOtros );
 									
 							panelOpciones.add( opcion6 );	
 							panelMenuSecundario.add( panelOpciones );
-				
+							
+					// - panelOpciones | Imagen Final
+							JPanel	panelImagen = new JPanel();
+									panelImagen.add( new JLabel ( new ImageIcon(" ") ) );
+								
+							
+							
 				this.getContentPane().add( panelMenuSecundario );
 		}
 		
@@ -201,8 +224,9 @@ public class MainMenu extends JFrame {
 			// - panelImagenTextoBoton |
 			JPanel	pnSaludo = new JPanel();	
 					pnSaludo.setLayout(new BoxLayout(pnSaludo, BoxLayout.Y_AXIS));
+					pnSaludo.setBackground( Colors.transparent );
 			JLabel	imagen  = new JLabel( new ImageIcon( "img\\book.png" ) );
-					imagen.setBorder( BorderFactory.createEmptyBorder( 75 , 0 , 79 , 55 ) );
+					imagen.setBorder( BorderFactory.createEmptyBorder( 61 , 0 , 79 , 55 ) );
 					
 					bienvenida = new JLabel( "Bienvenido/a: ");
 					bienvenida.setFont( Fonts.fontTitle );
@@ -210,6 +234,7 @@ public class MainMenu extends JFrame {
 				
 			JPanel	panelSaludoBoton = new JPanel( );
 					panelSaludoBoton.setLayout( new BoxLayout( panelSaludoBoton, BoxLayout.X_AXIS ) );
+					panelSaludoBoton.setBackground( new Color( 0 , 0 , 0 , 0 ) );
 					botonSalir = new JButton( "Salir" );
 					botonSalir.setFocusable( false );
 					botonSalir.setBackground( Color.LIGHT_GRAY );
