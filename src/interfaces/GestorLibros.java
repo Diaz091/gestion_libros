@@ -15,14 +15,14 @@ import resources.Fonts;
  * @since
  * @version 1.0
  * */
-public class BookManager extends JFrame{
+public class GestorLibros extends JFrame{
 	
 	private static final long serialVersionUID = -3702218765809391813L;
 	
 	private JButton botonAltas , botonBajas , botonModificar , botonConsultas;
 	
 	
-	BookManager(){
+	GestorLibros(){
 		
 		
 		components();
@@ -61,7 +61,7 @@ public class BookManager extends JFrame{
 	
 	public static void main(String[] args) {
 		
-		new BookManager();
+		new GestorLibros();
 
 	}
 

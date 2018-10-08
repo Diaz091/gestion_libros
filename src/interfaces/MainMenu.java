@@ -14,7 +14,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import controllers.StudentController;
+import controllers.ControladorAlumnos;
 import resources.Colors;
 import resources.Fonts;
 import resources.ImageTest;
@@ -22,23 +22,20 @@ import resources.ImageTest;
 
 public class MainMenu extends JFrame {
 		private static final long serialVersionUID = 5190669415336856587L;
-		/**
-		 * 
-		 */
+		
 		private JButton botonAlumnos , botonLibros, botonPrestamos, botonDevoluciones, botonLista, botonOtros, botonSalir;	
 		private JLabel	bienvenida;
 	
 		public MainMenu(){
 			ImageTest img = new ImageTest("img/imagen.png");
 			this.setContentPane(img);
-			
+		
 			components(); 
 			settings();  //Ajustes Generales
 			
 		}
 				
 		private void settings() {
-			
 			this.setDefaultCloseOperation( DISPOSE_ON_CLOSE );
 			this.setTitle( "Gestor de Préstamos de Libros" );
 			this.setLayout( new FlowLayout( ) );
@@ -106,9 +103,10 @@ public class MainMenu extends JFrame {
 							// Listener Para el BotonAlumnos, el cual abrira BookManager. 
 							// El cual se encargade gestionar los alumnos.
 							
-							StudentController stC = new StudentController(this);
-							botonAlumnos.addActionListener(stC);
+								ControladorAlumnos stC = new ControladorAlumnos(this);
+								botonAlumnos.addActionListener(stC);
 
+							
 					// - panelOpciones | 1er Boton + Etiqueta para Alumnos		
 							JLabel	tituloAlumno = new JLabel( "  Gestión de Alumnos" );
 									tituloAlumno.setFont( Fonts.fontTitle );

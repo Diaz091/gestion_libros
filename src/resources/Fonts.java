@@ -8,6 +8,7 @@ public final class Fonts {
 	public static final Font	fontText  =  new Font("Verdana" , Font.PLAIN +Font.BOLD , 18);
 	public static final Font	fontText2  =  new Font("Verdana" , Font.PLAIN +Font.BOLD , 20);
 	public static final Font	fontTextBold  =  new Font("Verdana" , Font.PLAIN  , 24);
+	public static final Font	fontButton  =  new Font("Arial" , Font.PLAIN  , 14);
 								
 	
 

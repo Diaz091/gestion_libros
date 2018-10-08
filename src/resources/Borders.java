@@ -13,8 +13,7 @@ public class Borders {
 			BorderFactory.createLineBorder( Color.BLACK , 2 ), 
 			BorderFactory.createEmptyBorder( 75 , 0 , 79 , 55 ),	
 			BorderFactory.createEmptyBorder( 0 , 10 , 0 , 30 ),
-			
-			
+			BorderFactory.createLineBorder( Color.BLACK , 2 ) 
  
 	};
 }

@@ -8,26 +8,16 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import javax.swing.JOptionPane;
-
 import interfaces.Login;
 import interfaces.MainMenu;
 
-public class LoginController implements ActionListener{
+public class ControladorLogin implements ActionListener{
 
 	private Login log;
 	private MainMenu main;
 	
-	public LoginController( Login lo , MainMenu ma ){
-		
+	public ControladorLogin( Login lo ){
 		this.log = lo;
-		this.main =ma;
-	}
-	
-	public LoginController( Login lo ){
-		
-		this.log = lo;
-		
 	}
 	
 	@Override
@@ -36,7 +26,8 @@ public class LoginController implements ActionListener{
 		String id = log.getTxt().getText();
 		
 		main = new MainMenu();
-		
+		log.dispose();
+		/*
 			try {
 				
 				Class.forName( "com.mysql.cj.jdbc.Driver" ).newInstance();
@@ -49,7 +40,6 @@ public class LoginController implements ActionListener{
 				if( id.equals("") ) {
 					main.getBienvenida().setText( main.getBienvenida().getText() + "Unknown" );
 				}
-				
 				while( rs.next() ) {
 					
 						if(rs.getString( "apellido" ) != null ) {
@@ -72,13 +62,6 @@ public class LoginController implements ActionListener{
 				e3.printStackTrace();
 			} catch ( SQLException e4 ) {
 				e4.printStackTrace();
-			}
-			 
-			 	
-		
+			}*/
 		}
-			
-	
-
-	
 }

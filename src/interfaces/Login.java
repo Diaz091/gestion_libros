@@ -1,10 +1,7 @@
 package interfaces;
 
 
-import java.awt.Color;
 import java.awt.Dimension;
-
-
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -14,8 +11,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-
-import controllers.LoginController;
+import controllers.ControladorLogin;
 import resources.Colors;
 import resources.Fonts;
 import resources.ImageTest;
@@ -37,8 +33,6 @@ public class Login extends JFrame{
 		}
 	
 		private void settings() {
-			
-			
 			this.setDefaultCloseOperation( DISPOSE_ON_CLOSE );
 			this.setSize( 320 , 240 );
 			this.setLocationRelativeTo( null );
@@ -66,7 +60,7 @@ public class Login extends JFrame{
 					login.setFocusable( false );
 				
 					txtID = new JTextField(13);
-					LoginController lc = new LoginController(this);
+					ControladorLogin lc = new ControladorLogin(this);
 					login.addActionListener(lc);
 				
 					panelLogin.add( textoID );
