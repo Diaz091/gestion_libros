@@ -256,6 +256,11 @@ public class MainMenu extends JFrame {
 			return bienvenida;
 		}
 
+		public JButton getBotonAlumnos() {
+			return botonAlumnos;
+		}
+
+		
 
 	
 	
