@@ -34,6 +34,7 @@ public class LoginController implements ActionListener{
 	public void actionPerformed( ActionEvent e ) {
 		
 		String id = log.getTxt().getText();
+		
 		main = new MainMenu();
 		
 			try {
@@ -44,13 +45,20 @@ public class LoginController implements ActionListener{
 				PreparedStatement ps = conMysql.prepareStatement( "Select nombre, apellido from users where id = ?" );
 					ps.setString(1, id );
 				ResultSet rs = ps.executeQuery();
-				while( rs.next() ) {
-					if(rs.getString( "apellido" ) != null ) {
-						main.getBienvenida().setText( main.getBienvenida().getText() + rs.getString( "nombre" ) + " " + rs.getString( "apellido" ) );	
-					}else {
-						main.getBienvenida().setText( main.getBienvenida().getText() + rs.getString( "nombre" ) );
-					}
+				
+				if( id.equals("") ) {
+					main.getBienvenida().setText( main.getBienvenida().getText() + "Unknown" );
 				}
+				
+				while( rs.next() ) {
+					
+						if(rs.getString( "apellido" ) != null ) {
+							main.getBienvenida().setText( main.getBienvenida().getText() + rs.getString( "nombre" ) + " " + rs.getString( "apellido" ) );	
+						}else {
+							main.getBienvenida().setText( main.getBienvenida().getText() + rs.getString( "nombre" ) );
+						}
+				}
+					
 				rs.close();
 				ps.close();
 				conMysql.close();
@@ -68,7 +76,9 @@ public class LoginController implements ActionListener{
 			 
 			 	
 		
-	}
+		}
+			
 	
 
+	
 }

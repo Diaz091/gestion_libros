@@ -58,10 +58,11 @@ public class MainMenu extends JFrame {
 
 		private void dibujarPanel() {
 			JPanel	panelTitulo = new JPanel( );
-					panelTitulo.setBackground( Colors.transparent );
+					panelTitulo.setBackground( Colors.transparentShy );
 			JLabel	tituloPrincipal = new JLabel( "Gestión de Préstamos de Libros" );
 					tituloPrincipal.setFont( Fonts.fontTitle );
-					panelTitulo.setBorder( BorderFactory.createLineBorder( Colors.borderColor , 2 ) );
+					tituloPrincipal.setForeground( Colors.textWhite );
+					panelTitulo.setBorder( BorderFactory.createLineBorder( Color.BLACK , 2 ) );
 					panelTitulo.setPreferredSize( new Dimension( 1250 , 45 ) );
 					panelTitulo.add( tituloPrincipal );
 					
@@ -73,9 +74,9 @@ public class MainMenu extends JFrame {
 			// - panelMenuSecundario | Borde más exterior del Menú Principal. 
 				 
 					JPanel	panelMenuSecundario = new JPanel( );
-							panelMenuSecundario.setBackground( Colors.transparent );
+							panelMenuSecundario.setBackground( Colors.transparentShy );
 							panelMenuSecundario.setPreferredSize( new Dimension( 550 , 584 ) );
-						//	panelMenuSecundario.setBorder( BorderFactory.createLineBorder( Color.BLACK , 2 ) );
+							panelMenuSecundario.setBorder( BorderFactory.createLineBorder( Color.BLACK , 2 ) );
 							this.getContentPane().add( panelMenuSecundario );
 						
 					// - panelTituloOpciones | Borde del Titulo (Menú Principal).
@@ -83,6 +84,7 @@ public class MainMenu extends JFrame {
 							panelTituloOpciones.setBackground( Colors.transparentShy );
 					JLabel	tituloSecundario = new JLabel( "Menú Principal" , JLabel.CENTER );
 							tituloSecundario.setFont( Fonts.fontTitle );
+							tituloSecundario.setForeground( Colors.textWhite );
 							tituloSecundario.setPreferredSize( new Dimension( 490 , 36 ) );
 							tituloSecundario.setBorder( BorderFactory.createLineBorder( Color.BLACK , 2 ) );
 							panelTituloOpciones.setPreferredSize( new Dimension( 500 , 45 ) );
@@ -225,12 +227,13 @@ public class MainMenu extends JFrame {
 			// - panelImagenTextoBoton |
 			JPanel	pnSaludo = new JPanel();	
 					pnSaludo.setLayout(new BoxLayout(pnSaludo, BoxLayout.Y_AXIS));
-					pnSaludo.setBackground( Colors.transparent );
+					pnSaludo.setBackground( Colors.transparentShy );
 			JLabel	imagen  = new JLabel( new ImageIcon( "img\\book.png" ) );
 					imagen.setBorder( BorderFactory.createEmptyBorder( 61 , 0 , 79 , 55 ) );
 					
 					bienvenida = new JLabel( "Bienvenido/a: ");
-					bienvenida.setFont( Fonts.fontTitle );
+					bienvenida.setFont( Fonts.fontTextBold );
+					bienvenida.setForeground( Colors.textWhite );
 					bienvenida.setBorder( BorderFactory.createEmptyBorder(0 , 10 , 0 , 30 ) );
 				
 			JPanel	panelSaludoBoton = new JPanel( );
@@ -239,7 +242,6 @@ public class MainMenu extends JFrame {
 					botonSalir = new JButton( "Salir" );
 					botonSalir.setFocusable( false );
 					botonSalir.setBackground( Color.LIGHT_GRAY );
-					
 					pnSaludo.add( imagen );
 					panelSaludoBoton.add( bienvenida );
 					panelSaludoBoton.add( botonSalir );
