@@ -1,5 +1,6 @@
 package interfaces;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
@@ -102,86 +103,59 @@ public class GestorAlumnos extends JFrame {
 					
 					panelAltas = new JPanel();
 					panelAltas.setBackground( Colors.backWhite);
-					panelAltas.setLayout(new GridBagLayout() );
 					panelAltas.setBorder( Borders.border[ 0 ] );
 					panelAltas.setPreferredSize( new Dimension( 1000 , 480 ) );
 					panelAltas.setVisible(false);
-									
+						
+					JPanel	panelListado = new JPanel();
+							panelListado.setLayout( new BorderLayout() );
+							panelListado.setPreferredSize( new Dimension( 225 , 450 ) );
+							panelListado.setBorder(Borders.border[ 3 ]);
+					JLabel	titulo = new JLabel( "Listado Alumnos" ,JLabel.CENTER );	
+							titulo.setFont( Fonts.fontTitleBorder );
+							panelListado.add( "North" , titulo );
+							panelAltas.add( panelListado ); 
+					
+					
+					/*
 						//  DNI ALUMNO \\
-						GridBagConstraints c = new GridBagConstraints();
-						c.gridx = 0;
-						c.gridy = 0;
-						c.insets = new Insets( 0 , 0 , 0 , 0 );
-						c.fill = GridBagConstraints.HORIZONTAL;
 						JLabel	lblDni = new JLabel( "DNI: " );
-							lblDni.setFont( Fonts.fontText );
-							panelAltas.add( lblDni , c );
-						c.gridx = 1;
-						c.gridy = 0;
-						c.insets = new Insets( 0 , 12 , 0 , 0 );
-						c.fill = GridBagConstraints.HORIZONTAL;
-							textoDNI = new JTextField( 10 );
-							panelAltas.add( textoDNI , c);
+								lblDni.setFont( Fonts.fontText );
+								panelAltas.add( lblDni);
+								textoDNI = new JTextField( 10 );
+								panelAltas.add( textoDNI);
 							
 						//  NOMBRE ALUMNO \\
-						
-						c.gridx = 2;
-						c.gridy = 0;
-						c.insets = new Insets( 0 , 15 , 0 , 0 );
-						c.fill = GridBagConstraints.HORIZONTAL;
-						
 						JLabel	lblNombre = new JLabel( "Nombre: " );
 								lblNombre.setFont( Fonts.fontText );
-								panelAltas.add( lblNombre, c );
-						c.gridx = 3;
-						c.gridy = 0;
-						c.insets = new Insets(  0 , 12 , 0 , 0 );
-						c.fill = GridBagConstraints.HORIZONTAL;
+								panelAltas.add( lblNombre );
 								textoNombre = new JTextField( 10 );
-								panelAltas.add( textoNombre , c );
+								panelAltas.add( textoNombre);
 								
 						// APELLIDO ALUMNO \\
-						c.gridx = 0;
-						c.gridy = 1;
-						c.insets = new Insets( 10 , 0 , 0 , 0 );
-						c.fill = GridBagConstraints.HORIZONTAL;
 						JLabel	lblApellido = new JLabel( "Apellido: " );
 								lblApellido.setFont( Fonts.fontText );
-								panelAltas.add( lblApellido , c );
-						c.gridx = 1;
-						c.gridy = 1;
-						c.insets = new Insets( 10 , 12 , 0 , 0 );
-						c.fill = GridBagConstraints.HORIZONTAL;		
+								panelAltas.add( lblApellido );
 								textoApellido = new JTextField( 10 ); 
-								panelAltas.add( textoApellido , c );
+								panelAltas.add( textoApellido );
 								
 						// APELLIDO_2 ALUMNO \\
-						c.gridx = 2;
-						c.gridy = 1;
-						c.insets = new Insets( 10 , 15 , 0 , 0 );
-						c.fill = GridBagConstraints.HORIZONTAL;
+					
 						JLabel	lblApellido2 = new JLabel( "Apellido 2: " );
 								lblApellido2.setFont( Fonts.fontText );
-								panelAltas.add( lblApellido2, c );
-						c.gridx = 3;
-						c.gridy = 1;
-						c.insets = new Insets( 10 , 12 , 0 , 0 );
-						c.fill = GridBagConstraints.HORIZONTAL;		
+								panelAltas.add( lblApellido2 );
 								textoApellido_2 = new JTextField( 10 ); 
-								panelAltas.add( textoApellido_2 , c );
-													
+								panelAltas.add( textoApellido_2 );
+						*/ 					
 						// BOTON GUARDAR Y TEXTVIEW \\
 						
 						textoView = new JTextArea( 10 , 70 );		
-						panelAltas.add( textoView );
+					//	panelAltas.add( textoView );
 					
-						/*c.gridx = 7;
-						c.gridy = 10;
-						c.insets = new Insets( 20 , 50 , 0 , 0 );
-						c.fill = GridBagConstraints.HORIZONTAL;*/
 						
 						botonGuardar = new JButton( "Añadir Alumno" );	
-						panelAltas.add( botonGuardar );
+					//	panelAltas.add( botonGuardar );
+				
 							
 						//  BAJAS ALUMNOS \\
 						panelBajas = new JPanel();
@@ -190,23 +164,34 @@ public class GestorAlumnos extends JFrame {
 						panelBajas.setBorder( Borders.border[ 0 ] );
 						panelBajas.setPreferredSize( new Dimension( 1000 , 480 ) );
 						panelBajas.setVisible(false);
+							
+						
 						
 						//  MODIFICAR ALUMNOS \\
-						panelBajas = new JPanel();
-						panelBajas.setBackground( Colors.backWhite);
-						panelBajas.setLayout(new GridBagLayout() );
-						panelBajas.setBorder( Borders.border[ 0 ] );
-						panelBajas.setPreferredSize( new Dimension( 1000 , 480 ) );
-						panelBajas.setVisible(false);
+						panelModificar = new JPanel();
+						panelModificar.setBackground( Colors.backWhite);
+						panelModificar.setLayout(new GridBagLayout() );
+						panelModificar.setBorder( Borders.border[ 0 ] );
+						panelModificar.setPreferredSize( new Dimension( 1000 , 480 ) );
+						panelModificar.setVisible(false);
+						
 						
 						
 						//  CONSULTAR ALUMNOS \\
+						panelConsultas = new JPanel();
+						panelConsultas.setBackground( Colors.backWhite);
+						panelConsultas.setLayout(new GridBagLayout() );
+						panelConsultas.setBorder( Borders.border[ 0 ] );
+						panelConsultas.setPreferredSize( new Dimension( 1000 , 480 ) );
+						panelConsultas.setVisible(false);
 						
 						
 						
 					this.getContentPane().add( panelInicio );  // Panel Inicial 
 					this.getContentPane().add( panelAltas );   // Panel Altas | Componentes para dar de alta a un usuario
 					this.getContentPane().add( panelBajas );
+					this.getContentPane().add( panelModificar );
+					this.getContentPane().add( panelConsultas );
 				
 				
 					botonVolver = new JButton( "Volver" );
