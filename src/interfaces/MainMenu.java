@@ -15,6 +15,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import controllers.ControladorAlumnos;
+import controllers.ControladorLogin;
 import resources.Colors;
 import resources.Fonts;
 import resources.ImageTest;
@@ -23,7 +24,7 @@ import resources.ImageTest;
 public class MainMenu extends JFrame {
 		private static final long serialVersionUID = 5190669415336856587L;
 		
-		private JButton botonAlumnos , botonLibros, botonPrestamos, botonDevoluciones, botonLista, botonOtros, botonSalir;	
+		private JButton botonAlumnos , botonLibros, botonPrestamos, botonDevoluciones, botonLista, botonSalir;	
 		private JLabel	bienvenida;
 	
 		public MainMenu(){
@@ -103,7 +104,8 @@ public class MainMenu extends JFrame {
 							// Listener Para el BotonAlumnos, el cual abrira BookManager. 
 							// El cual se encargade gestionar los alumnos.
 							
-								ControladorAlumnos stC = new ControladorAlumnos(this);
+								ControladorAlumnos stC = ControladorAlumnos.instancia();
+								stC.setMain(this);
 								botonAlumnos.addActionListener(stC);
 
 							
@@ -193,32 +195,12 @@ public class MainMenu extends JFrame {
 									
 							panelOpciones.add( opcion5 );	
 							
-					// - panelOpciones | 6to Boton + Etiqueta para Otros..
-							botonOtros = new JButton( new ImageIcon( "img\\alumIco.png" ) );
-							botonOtros.setBackground( Color.lightGray );
-							botonOtros.setBorder( BorderFactory.createLineBorder( Color.BLACK , 2 ) );
-							panelOpciones.add(Box.createRigidArea( new Dimension( 0 , 15 ) ) );
-							
-							JLabel	tituloOtros = new JLabel ( "  Otros.." );
-									tituloOtros.setFont( Fonts.fontTitle );
-									tituloOtros.setBorder( BorderFactory.createLineBorder( Color.BLACK , 2 ) );
-									tituloOtros.setPreferredSize( new Dimension( 425 , 36 ) );
-						
-							JPanel	opcion6 = new JPanel();
-									opcion6.setBackground( Colors.transparent );
-									opcion6.add( botonOtros );
-									opcion6.add( tituloOtros );
-									
-							panelOpciones.add( opcion6 );	
-							panelMenuSecundario.add( panelOpciones );
+				panelMenuSecundario.add( panelOpciones );
 							
 					// - panelOpciones | Imagen Final
 							JPanel	panelImagen = new JPanel();
 									panelImagen.add( new JLabel ( new ImageIcon(" ") ) );
-								
-							
-							
-				this.getContentPane().add( panelMenuSecundario );
+			this.getContentPane().add( panelMenuSecundario );
 		}
 		
 		private void dibujarPanelSecundario() {
@@ -245,8 +227,7 @@ public class MainMenu extends JFrame {
 					panelSaludoBoton.add( botonSalir );
 					pnSaludo.add( panelSaludoBoton );
 		
-		
-		this.getContentPane().add( pnSaludo );
+			this.getContentPane().add( pnSaludo );
 		}
 	
 		
@@ -256,6 +237,10 @@ public class MainMenu extends JFrame {
 
 		public JButton getBotonAlumnos() {
 			return botonAlumnos;
+		}
+
+		public JButton getBotonSalir() {
+			return botonSalir;
 		}
 
 		

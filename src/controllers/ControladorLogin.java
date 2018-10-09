@@ -8,6 +8,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import javax.swing.JButton;
+
 import interfaces.Login;
 import interfaces.MainMenu;
 
@@ -15,7 +17,7 @@ public class ControladorLogin implements ActionListener{
 
 	private Login log;
 	private MainMenu main;
-	
+	private Connection conMysql;
 	public ControladorLogin( Login lo ){
 		this.log = lo;
 	}
@@ -27,12 +29,10 @@ public class ControladorLogin implements ActionListener{
 		
 		main = new MainMenu();
 		log.dispose();
-		/*
+		
 			try {
+				conMysql = ConexionMySql.instancia().conectarMySql();
 				
-				Class.forName( "com.mysql.cj.jdbc.Driver" ).newInstance();
-				String conexion = "jdbc:mysql://localhost:3306/gestion_libros?user=root&password=tiger&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
-				Connection	conMysql = DriverManager.getConnection( conexion );
 				PreparedStatement ps = conMysql.prepareStatement( "Select nombre, apellido from users where id = ?" );
 					ps.setString(1, id );
 				ResultSet rs = ps.executeQuery();
@@ -54,14 +54,11 @@ public class ControladorLogin implements ActionListener{
 				conMysql.close();
 				log.dispose();
 				
-			} catch ( InstantiationException e1 ) {
+			} catch (SQLException e1) {
 				e1.printStackTrace();
-			} catch ( IllegalAccessException e2 ) {
-				e2.printStackTrace();
-			} catch ( ClassNotFoundException e3 ) {
-				e3.printStackTrace();
-			} catch ( SQLException e4 ) {
-				e4.printStackTrace();
-			}*/
+			}
+				
+			
+			
 		}
 }
