@@ -29,7 +29,7 @@ public class ControladorLogin implements ActionListener{
 		
 		main = new MainMenu();
 		log.dispose();
-		/*
+		
 			try {
 				conMysql = ConexionMySql.instancia().conectarMySql();
 				
@@ -58,7 +58,7 @@ public class ControladorLogin implements ActionListener{
 				e1.printStackTrace();
 			}
 				
-			*/
+			
 			
 		}
 }
