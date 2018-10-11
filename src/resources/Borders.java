@@ -10,7 +10,7 @@ import javax.swing.border.TitledBorder;
  */
 
 public class Borders {
-	private static Border bTitle = BorderFactory.createLineBorder( Colors.cuteBlue );
+	private static Border bTitle = BorderFactory.createLineBorder( Colors.cuteBlue , 2);
 	
 	public static Border []  border = {
 			BorderFactory.createLineBorder( Color.WHITE , 2 ), 

@@ -6,9 +6,11 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.GridLayout;
 import java.awt.Insets;
 
 import javax.swing.BorderFactory;
+import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -30,9 +32,10 @@ public class GestorAlumnos extends JFrame {
 	private JPanel  panelInicio, panelAltas , panelBajas , panelModificar , panelConsultas;
 	
 	// COMPONENTES PANEL ALTAS \\
-	private JTextField	textoNombre , textoApellido , textoApellido_2, textoDNI ; 
-	private JButton 	botonGuardar;
-	private JTextArea	textoView;	
+	private JTextField	textoNombre  , textoApellido , textoApellido_2, textoDNI , textoAlumnos; 
+	private JPanel		panelListado;
+	private JButton 	botonGuardar , botonListar;
+	
 	
  	
 		public GestorAlumnos(){
@@ -107,55 +110,110 @@ public class GestorAlumnos extends JFrame {
 					panelAltas.setPreferredSize( new Dimension( 1000 , 480 ) );
 					panelAltas.setVisible(false);
 						
-					JPanel	panelListado = new JPanel();
+					// 
+					panelListado = new JPanel();
 							panelListado.setLayout( new BorderLayout() );
 							panelListado.setPreferredSize( new Dimension( 225 , 450 ) );
 							panelListado.setBorder(Borders.border[ 3 ]);
-					JLabel	titulo = new JLabel( "Listado Alumnos" ,JLabel.CENTER );	
+					JLabel	titulo = new JLabel( "Listado Alumnos" , JLabel.CENTER );	
 							titulo.setFont( Fonts.fontTitleBorder );
 							panelListado.add( "North" , titulo );
-							panelAltas.add( panelListado ); 
+					JLabel 	space = new JLabel(" ");
+							space.setBorder( BorderFactory.createEmptyBorder( 0 , 75 , 0 , 45 ) );
+							panelAltas.add( panelListado );
+							panelAltas.add( space );
+				
+					JPanel	panelDatosAlum = new JPanel();
+							panelDatosAlum.setLayout( new GridBagLayout() );
+							panelDatosAlum.setBorder( Borders.border[ 4 ] );
+							panelDatosAlum.setPreferredSize( new Dimension( 460 , 250 ) );
+							panelDatosAlum.setBackground( Colors.transparentShy );
 					
-					
-					/*
-						//  DNI ALUMNO \\
+					GridBagConstraints c = new GridBagConstraints();
+					c.fill = GridBagConstraints.HORIZONTAL;
+					c.gridx = 0;
+					c.gridy = 0;
+					c.insets = new Insets (0 , 5 , 0 , 0 );
+					//  DNI ALUMNO \\
 						JLabel	lblDni = new JLabel( "DNI: " );
 								lblDni.setFont( Fonts.fontText );
-								panelAltas.add( lblDni);
+								panelDatosAlum.add( lblDni , c);
 								textoDNI = new JTextField( 10 );
-								panelAltas.add( textoDNI);
+					c.fill = GridBagConstraints.HORIZONTAL;
+					c.gridx = 1;
+					c.gridy = 0;
+					c.weightx = 6;
+								panelDatosAlum.add( textoDNI , c);
 							
-						//  NOMBRE ALUMNO \\
+					//  NOMBRE ALUMNO \\
+					c.fill = GridBagConstraints.HORIZONTAL;
+					c.gridx = 0;
+					c.gridy = 1;
+					c.weightx = 1;
+					c.insets = new Insets (0 , 5 , 0 , 0 );
+						JLabel	lblApellido = new JLabel( "Apellido:  " );
+								lblApellido.setFont( Fonts.fontText );
+								panelDatosAlum.add( lblApellido , c );
+					c.fill = GridBagConstraints.HORIZONTAL;
+					c.gridx = 1;
+					c.gridy = 1;
+					c.weightx = 6;
+								textoApellido = new JTextField( 10 );
+								panelDatosAlum.add( textoApellido , c);
+								
+					// APELLIDO ALUMNO \\
+					c.fill = GridBagConstraints.HORIZONTAL;
+					c.gridx = 2;
+					c.gridy = 0;
+					c.weightx = 1;
+					c.insets = new Insets( 0 , 10 , 0 , 0 );
 						JLabel	lblNombre = new JLabel( "Nombre: " );
 								lblNombre.setFont( Fonts.fontText );
-								panelAltas.add( lblNombre );
+								panelDatosAlum.add( lblNombre , c );
+					c.fill = GridBagConstraints.HORIZONTAL;
+					c.gridx = 3;
+					c.gridy = 0;
+					c.weightx = 5;
+					c.insets = new Insets( 0 , 0 , 0 , 5 );
 								textoNombre = new JTextField( 10 );
-								panelAltas.add( textoNombre);
+								panelDatosAlum.add( textoNombre , c);
 								
-						// APELLIDO ALUMNO \\
-						JLabel	lblApellido = new JLabel( "Apellido: " );
-								lblApellido.setFont( Fonts.fontText );
-								panelAltas.add( lblApellido );
-								textoApellido = new JTextField( 10 ); 
-								panelAltas.add( textoApellido );
-								
-						// APELLIDO_2 ALUMNO \\
-					
+					// APELLIDO_2 ALUMNO \\
+					c.fill = GridBagConstraints.HORIZONTAL;
+					c.gridx = 2;
+					c.gridy = 1;
+					c.weightx = 1;
+					c.insets = new Insets( 0 , 10 , 0 , 0 );
 						JLabel	lblApellido2 = new JLabel( "Apellido 2: " );
 								lblApellido2.setFont( Fonts.fontText );
-								panelAltas.add( lblApellido2 );
+								panelDatosAlum.add( lblApellido2 , c);
 								textoApellido_2 = new JTextField( 10 ); 
-								panelAltas.add( textoApellido_2 );
-						*/ 					
-						// BOTON GUARDAR Y TEXTVIEW \\
-						
-						textoView = new JTextArea( 10 , 70 );		
-					//	panelAltas.add( textoView );
+					c.fill = GridBagConstraints.HORIZONTAL;
+					c.gridx = 3;
+					c.gridy = 1;
+					c.weightx = 5;
+					c.insets = new Insets( 0 , 0 , 0 , 5 );
+								panelDatosAlum.add( textoApellido_2 , c);
+								
+					// BOTON GUARDAR & BOTON LISTAR ALUMNOS\\
+					c.fill = GridBagConstraints.HORIZONTAL;
+					c.gridx = 1;
+					c.gridy = 4;
+					c.weightx = 0;
+					c.gridwidth = 2;
+					c.insets = new Insets( 20 , 0 , 0 , 0 );
+							botonGuardar = new JButton( "Añadir Alumno" );	
+							panelDatosAlum.add( botonGuardar , c);
 					
-						
-						botonGuardar = new JButton( "Añadir Alumno" );	
-					//	panelAltas.add( botonGuardar );
-				
+					c.fill = GridBagConstraints.HORIZONTAL;
+					c.gridx = 1;
+					c.gridy = 6;
+					c.weightx = 0;
+					c.gridwidth = 2;
+					c.insets = new Insets( 20 , 0 , 0 , 0 );
+							botonListar = new JButton( "Listar Alumnos" );	
+							panelDatosAlum.add( botonListar , c);
+							panelAltas.add( panelDatosAlum );			 	
 							
 						//  BAJAS ALUMNOS \\
 						panelBajas = new JPanel();
@@ -209,6 +267,7 @@ public class GestorAlumnos extends JFrame {
 					botonBajas.addActionListener( st );
 					botonVolver.addActionListener( st );
 					botonGuardar.addActionListener( st );
+					botonListar.addActionListener( st );
 		}
 		
 		// Getters & Setters \\
@@ -272,6 +331,16 @@ public class GestorAlumnos extends JFrame {
 		public JPanel getPanelConsultas() {
 			return panelConsultas;
 		}
+
+		public JButton getBotonListar() {
+			return botonListar;
+		}
+
+		public JPanel getPanelListado() {
+			return panelListado;
+		}
+		
+		
 		
 		
 		

@@ -6,11 +6,15 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 
 import interfaces.MainMenu;
+import models.Alumno;
+import models.ConexionMySql;
+import models.DataResource;
 import interfaces.GestorAlumnos;
 
 public class ControladorAlumnos implements ActionListener{
@@ -77,9 +81,17 @@ public class ControladorAlumnos implements ActionListener{
 					ps.executeUpdate();
 					conMysql.close();
 				} catch (SQLException e1) {
-					e1.printStackTrace();
+					JOptionPane.showMessageDialog(null, "El Alumno con DNI " + stManager.getTextoDNI().getText() + ". Ya existe en nuestra Base de Datos. ");
 				}
 														
+			}
+			
+			if ( (JButton) e.getSource() == stManager.getBotonListar() ) {
+				
+				ArrayList<Alumno> alumnos = DataResource.instancia().verAlumnos();
+				
+				
+				
 			}
 			
 			// LISTENER PARA DAR DE BAJA ALUMNOS EN LA BASE DE DATOS \\

@@ -12,6 +12,7 @@ import javax.swing.JButton;
 
 import interfaces.Login;
 import interfaces.MainMenu;
+import models.ConexionMySql;
 
 public class ControladorLogin implements ActionListener{
 
@@ -51,7 +52,6 @@ public class ControladorLogin implements ActionListener{
 					
 				rs.close();
 				ps.close();
-				conMysql.close();
 				log.dispose();
 				
 			} catch (SQLException e1) {
