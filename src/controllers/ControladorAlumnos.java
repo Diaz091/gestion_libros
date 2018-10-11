@@ -8,6 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 
@@ -87,13 +88,23 @@ public class ControladorAlumnos implements ActionListener{
 			}
 			
 			if ( (JButton) e.getSource() == stManager.getBotonListar() ) {
+				DefaultListModel<Alumno> alu = DataResource.instancia().modeloAlumno();
+				stManager.getListaAlumnos().setModel(alu);
+				stManager.getTextoDNI().setText("");
+				stManager.getTextoNombre().setText(""); 
+				stManager.getTextoApellido().setText("");
+				stManager.getTextoApellido_2().setText("");
+			}
+			
+			if ( (JButton) e.getSource() == stManager.getBotonLimpiar() ) {
 				
-				ArrayList<Alumno> alumnos = DataResource.instancia().verAlumnos();
-				
+				DefaultListModel<Alumno> alumno = (DefaultListModel<Alumno>) stManager.getListaAlumnos().getModel();
+				alumno.removeAllElements();
+				alumno.clear();
+				stManager.getListaAlumnos().setModel( alumno );
 				
 				
 			}
-			
 			// LISTENER PARA DAR DE BAJA ALUMNOS EN LA BASE DE DATOS \\
 			if( (JButton) e.getSource() == stManager.getBotonBajas() ) {
 				if( stManager.getPanelAltas().isVisible()) {

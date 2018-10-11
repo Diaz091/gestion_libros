@@ -6,6 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import javax.swing.DefaultListModel;
+
 public class DataResource {
 	
 	private Connection conMysql;
@@ -45,6 +47,30 @@ public class DataResource {
 		
 		
 		return alumnos; 
+	}
+	
+	public DefaultListModel<Alumno> modeloAlumno(){
+		DefaultListModel<Alumno> alumnos = new DefaultListModel<Alumno>();
+		try {	
+			PreparedStatement ps = conMysql.prepareStatement( ALUMNOCAMPOS + "from alumnos" );
+			ResultSet rs = ps.executeQuery();
+			while ( rs.next() ) {
+				if(!rs.getString("dni").isEmpty() ){
+					Alumno al = new Alumno(
+								rs.getString( "dni" ),
+								rs.getString( "nombre" ),
+								rs.getString( "apellido" ),
+								rs.getString( "apellido_2" ) ); 
+					
+					alumnos.addElement( al );
+				}
+			}
+			rs.close();
+		
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return alumnos;
 	}
 	
 }

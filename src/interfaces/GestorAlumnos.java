@@ -9,16 +9,21 @@ import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.Insets;
 
+import javax.swing.AbstractButton;
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
+import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 import controllers.ControladorAlumnos;
+import models.Alumno;
+import models.DataResource;
 import resources.Borders;
 import resources.Colors;
 import resources.Fonts;
@@ -28,13 +33,16 @@ public class GestorAlumnos extends JFrame {
 
 	private static final long serialVersionUID = 3788394061045167747L;
 
-	private JButton botonAltas , botonBajas , botonModificar , botonConsultas, botonVolver;
-	private JPanel  panelInicio, panelAltas , panelBajas , panelModificar , panelConsultas;
+	private JButton botonAltas  , botonBajas , botonModificar , botonConsultas , botonVolver;
+	private JPanel  panelInicio , panelAltas , panelBajas 	  , panelModificar , panelConsultas;
 	
 	// COMPONENTES PANEL ALTAS \\
-	private JTextField	textoNombre  , textoApellido , textoApellido_2, textoDNI , textoAlumnos; 
-	private JPanel		panelListado;
-	private JButton 	botonGuardar , botonListar;
+	private JTextField					textoNombre  , textoApellido , textoApellido_2, textoDNI ; 
+	private JList 			 <Alumno>	listaAlumnos;
+	private JPanel						panelListado;
+	private JButton 					botonGuardar , botonListar, botonLimpiar;
+	
+	
 	
 	
  	
@@ -50,7 +58,7 @@ public class GestorAlumnos extends JFrame {
 			this.setResizable( false );
 			this.setSize( 1100, 650 );
 			this.setLayout( new FlowLayout() );
-			this.setLocationRelativeTo(null);
+			this.setLocationRelativeTo( null );
 			this.setVisible( true );
 		}
 		
@@ -118,6 +126,8 @@ public class GestorAlumnos extends JFrame {
 					JLabel	titulo = new JLabel( "Listado Alumnos" , JLabel.CENTER );	
 							titulo.setFont( Fonts.fontTitleBorder );
 							panelListado.add( "North" , titulo );
+							listaAlumnos = new JList<Alumno>(  );
+							panelListado.add( listaAlumnos );
 					JLabel 	space = new JLabel(" ");
 							space.setBorder( BorderFactory.createEmptyBorder( 0 , 75 , 0 , 45 ) );
 							panelAltas.add( panelListado );
@@ -213,6 +223,15 @@ public class GestorAlumnos extends JFrame {
 					c.insets = new Insets( 20 , 0 , 0 , 0 );
 							botonListar = new JButton( "Listar Alumnos" );	
 							panelDatosAlum.add( botonListar , c);
+					
+					c.fill = GridBagConstraints.HORIZONTAL;
+					c.gridx = 1;
+					c.gridy = 8;
+					c.weightx = 0;
+					c.gridwidth = 2;
+					c.insets = new Insets( 20 , 0 , 0 , 0 );
+							botonLimpiar = new JButton( "Vaciar Lista" );	
+							panelDatosAlum.add( botonLimpiar , c);		
 							panelAltas.add( panelDatosAlum );			 	
 							
 						//  BAJAS ALUMNOS \\
@@ -268,6 +287,7 @@ public class GestorAlumnos extends JFrame {
 					botonVolver.addActionListener( st );
 					botonGuardar.addActionListener( st );
 					botonListar.addActionListener( st );
+					botonLimpiar.addActionListener( st );
 		}
 		
 		// Getters & Setters \\
@@ -339,7 +359,15 @@ public class GestorAlumnos extends JFrame {
 		public JPanel getPanelListado() {
 			return panelListado;
 		}
-		
+
+		public JList<Alumno> getListaAlumnos() {
+			return listaAlumnos;
+		}
+
+		public JButton getBotonLimpiar() {
+			return botonLimpiar;
+		}
+
 		
 		
 		

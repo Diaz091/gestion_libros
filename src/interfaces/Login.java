@@ -39,6 +39,7 @@ public class Login extends JFrame{
 			this.setResizable(false);
 			this.setLayout( new BoxLayout(this.getContentPane(), BoxLayout.Y_AXIS ) );
 			this.setVisible( true );
+		
 		}
 		
 		private void dibujar() {
