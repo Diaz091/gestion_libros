@@ -3,7 +3,8 @@ package interfaces;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
-
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.Box;
@@ -15,7 +16,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import controllers.ControladorAlumnos;
-import controllers.ControladorLogin;
 import resources.Colors;
 import resources.Fonts;
 import resources.ImageTest;
@@ -196,10 +196,7 @@ public class MainMenu extends JFrame {
 							panelOpciones.add( opcion5 );	
 							
 				panelMenuSecundario.add( panelOpciones );
-							
-					// - panelOpciones | Imagen Final
-							JPanel	panelImagen = new JPanel();
-									panelImagen.add( new JLabel ( new ImageIcon(" ") ) );
+				
 			this.getContentPane().add( panelMenuSecundario );
 		}
 		
@@ -222,6 +219,15 @@ public class MainMenu extends JFrame {
 					botonSalir = new JButton( "Salir" );
 					botonSalir.setFocusable( false );
 					botonSalir.setBackground( Color.LIGHT_GRAY );
+							// CAMBIAR DE SITIO \\
+					botonSalir.addActionListener(new ActionListener() {
+						
+						@Override
+						public void actionPerformed(ActionEvent e) {
+							dispose();
+							
+						}
+					});
 					pnSaludo.add( imagen );
 					panelSaludoBoton.add( bienvenida );
 					panelSaludoBoton.add( botonSalir );

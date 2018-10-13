@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 
 public class DataResource {
 	
@@ -71,6 +72,20 @@ public class DataResource {
 			e.printStackTrace();
 		}
 		return alumnos;
+	}
+	
+	public void borrarAlumno(Alumno alu) {
+		Alumno al = alu;
+		try {
+			PreparedStatement ps = conMysql.prepareStatement("DELETE FROM alumnos where dni = ?" );
+			ps.setString(1 , al.getDni());
+			ps.executeUpdate();
+			
+			JOptionPane.showMessageDialog( null, "El alumno " + al.getNombre() + ", con DNI " +al.getDni() + " fué eliminado correctamente. " );
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
 	}
 	
 }

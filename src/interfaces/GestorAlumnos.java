@@ -1,29 +1,25 @@
 package interfaces;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.GridLayout;
 import java.awt.Insets;
 
-import javax.swing.AbstractButton;
-import javax.swing.BorderFactory;
-import javax.swing.BoxLayout;
-import javax.swing.DefaultListModel;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
-import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
+
 import controllers.ControladorAlumnos;
+import controllers.ControladorAlumnosMouse;
 import models.Alumno;
-import models.DataResource;
+
 import resources.Borders;
 import resources.Colors;
 import resources.Fonts;
@@ -33,19 +29,16 @@ public class GestorAlumnos extends JFrame {
 
 	private static final long serialVersionUID = 3788394061045167747L;
 
-	private JButton botonAltas  , botonBajas , botonModificar , botonConsultas , botonVolver;
-	private JPanel  panelInicio , panelAltas , panelBajas 	  , panelModificar , panelConsultas;
+	private JButton botonAltas  , botonConsultas , botonVolver;
+	private JPanel  panelInicio , panelAltas     , panelConsultas;
 	
-	// COMPONENTES PANEL ALTAS \\
+	// COMPONENTES  ALTAS | BAJAS | MODIFICAR \\
 	private JTextField					textoNombre  , textoApellido , textoApellido_2, textoDNI ; 
-	private JList 			 <Alumno>	listaAlumnos;
+	private JList 			 < Alumno >	listaAlumnos;
 	private JPanel						panelListado;
-	private JButton 					botonGuardar , botonListar, botonLimpiar;
+	private JButton 					botonGuardar , botonListar , botonLimpiar , botonBorrar , botonModificar;
 	
 	
-	
-	
- 	
 		public GestorAlumnos(){
 			ImageTest imgBack = new ImageTest( "img/fondoAlum.jpg" );
 			this.setContentPane( imgBack );
@@ -64,6 +57,18 @@ public class GestorAlumnos extends JFrame {
 		
 		private void components() {
 			dibujarPanel();
+			dibujar();
+			
+
+			botonVolver = new JButton( "Volver" );
+				botonVolver.setFont( Fonts.fontButton );
+				botonVolver.setFocusable(false);
+				botonVolver.setPreferredSize( new Dimension( 100 , 30 ) );
+			
+							
+			this.getContentPane().add( botonVolver );
+			
+			listeners();
 		}
 			
 		private void dibujarPanel() {
@@ -73,23 +78,15 @@ public class GestorAlumnos extends JFrame {
 					
 			JLabel	tituloPrincipal = new JLabel( "Gestión de Alumnos");
 					tituloPrincipal.setFont( Fonts.fontTitle );
-					panelTitulo.setBorder( BorderFactory.createLineBorder( Color.WHITE , 2 ) );
+					panelTitulo.setBorder( Borders.border[5]  );
 					panelTitulo.setPreferredSize( new Dimension( 900 , 45 ) );
 					panelTitulo.add( tituloPrincipal );
 					
-					
 					this.getContentPane().add( panelTitulo);
 					
-					//  Posible Metodo Externo  \\
-					botonAltas = new JButton( "Altas" );
+					botonAltas = new JButton( "Altas | Bajas | Modificaciones" );
 						botonAltas.setFont( Fonts.fontButton );
 						botonAltas.setFocusable(false);
-						botonBajas = new JButton( "Bajas" );
-						botonBajas.setFont( Fonts.fontButton );
-						botonBajas.setFocusable(false);
-					botonModificar = new JButton( "Modificar" );
-						botonModificar.setFont( Fonts.fontButton );
-						botonModificar.setFocusable(false);
 					botonConsultas = new JButton( "Consulta" );	
 						botonConsultas.setFont( Fonts.fontButton );
 						botonConsultas.setFocusable(false);
@@ -98,161 +95,16 @@ public class GestorAlumnos extends JFrame {
 					panelBotones.setBackground( Colors.transparentShy );
 					panelBotones.setPreferredSize( new Dimension ( 900 , 40 ) );
 					panelBotones.add( botonAltas );
-					panelBotones.add( botonBajas );
-					panelBotones.add( botonModificar );
 					panelBotones.add( botonConsultas );
 					
 					this.getContentPane().add( panelBotones ); 
-					
+				
 					//  PANEL INICIO VENTANA GESTOR ALUMNOS  \\
 					panelInicio = new JPanel();
 					panelInicio.setBackground( Colors.transparentShy );
 					panelInicio.setBorder( Borders.border[ 0 ] );
 					panelInicio.setPreferredSize( new Dimension( 1000 , 480 ) );
-					
-					//  ALTAS ALUMNOS \\
-					
-					panelAltas = new JPanel();
-					panelAltas.setBackground( Colors.backWhite);
-					panelAltas.setBorder( Borders.border[ 0 ] );
-					panelAltas.setPreferredSize( new Dimension( 1000 , 480 ) );
-					panelAltas.setVisible(false);
-						
-					// 
-					panelListado = new JPanel();
-							panelListado.setLayout( new BorderLayout() );
-							panelListado.setPreferredSize( new Dimension( 225 , 450 ) );
-							panelListado.setBorder(Borders.border[ 3 ]);
-					JLabel	titulo = new JLabel( "Listado Alumnos" , JLabel.CENTER );	
-							titulo.setFont( Fonts.fontTitleBorder );
-							panelListado.add( "North" , titulo );
-							listaAlumnos = new JList<Alumno>(  );
-							panelListado.add( listaAlumnos );
-					JLabel 	space = new JLabel(" ");
-							space.setBorder( BorderFactory.createEmptyBorder( 0 , 75 , 0 , 45 ) );
-							panelAltas.add( panelListado );
-							panelAltas.add( space );
-				
-					JPanel	panelDatosAlum = new JPanel();
-							panelDatosAlum.setLayout( new GridBagLayout() );
-							panelDatosAlum.setBorder( Borders.border[ 4 ] );
-							panelDatosAlum.setPreferredSize( new Dimension( 460 , 250 ) );
-							panelDatosAlum.setBackground( Colors.transparentShy );
-					
-					GridBagConstraints c = new GridBagConstraints();
-					c.fill = GridBagConstraints.HORIZONTAL;
-					c.gridx = 0;
-					c.gridy = 0;
-					c.insets = new Insets (0 , 5 , 0 , 0 );
-					//  DNI ALUMNO \\
-						JLabel	lblDni = new JLabel( "DNI: " );
-								lblDni.setFont( Fonts.fontText );
-								panelDatosAlum.add( lblDni , c);
-								textoDNI = new JTextField( 10 );
-					c.fill = GridBagConstraints.HORIZONTAL;
-					c.gridx = 1;
-					c.gridy = 0;
-					c.weightx = 6;
-								panelDatosAlum.add( textoDNI , c);
-							
-					//  NOMBRE ALUMNO \\
-					c.fill = GridBagConstraints.HORIZONTAL;
-					c.gridx = 0;
-					c.gridy = 1;
-					c.weightx = 1;
-					c.insets = new Insets (0 , 5 , 0 , 0 );
-						JLabel	lblApellido = new JLabel( "Apellido:  " );
-								lblApellido.setFont( Fonts.fontText );
-								panelDatosAlum.add( lblApellido , c );
-					c.fill = GridBagConstraints.HORIZONTAL;
-					c.gridx = 1;
-					c.gridy = 1;
-					c.weightx = 6;
-								textoApellido = new JTextField( 10 );
-								panelDatosAlum.add( textoApellido , c);
-								
-					// APELLIDO ALUMNO \\
-					c.fill = GridBagConstraints.HORIZONTAL;
-					c.gridx = 2;
-					c.gridy = 0;
-					c.weightx = 1;
-					c.insets = new Insets( 0 , 10 , 0 , 0 );
-						JLabel	lblNombre = new JLabel( "Nombre: " );
-								lblNombre.setFont( Fonts.fontText );
-								panelDatosAlum.add( lblNombre , c );
-					c.fill = GridBagConstraints.HORIZONTAL;
-					c.gridx = 3;
-					c.gridy = 0;
-					c.weightx = 5;
-					c.insets = new Insets( 0 , 0 , 0 , 5 );
-								textoNombre = new JTextField( 10 );
-								panelDatosAlum.add( textoNombre , c);
-								
-					// APELLIDO_2 ALUMNO \\
-					c.fill = GridBagConstraints.HORIZONTAL;
-					c.gridx = 2;
-					c.gridy = 1;
-					c.weightx = 1;
-					c.insets = new Insets( 0 , 10 , 0 , 0 );
-						JLabel	lblApellido2 = new JLabel( "Apellido 2: " );
-								lblApellido2.setFont( Fonts.fontText );
-								panelDatosAlum.add( lblApellido2 , c);
-								textoApellido_2 = new JTextField( 10 ); 
-					c.fill = GridBagConstraints.HORIZONTAL;
-					c.gridx = 3;
-					c.gridy = 1;
-					c.weightx = 5;
-					c.insets = new Insets( 0 , 0 , 0 , 5 );
-								panelDatosAlum.add( textoApellido_2 , c);
-								
-					// BOTON GUARDAR & BOTON LISTAR ALUMNOS\\
-					c.fill = GridBagConstraints.HORIZONTAL;
-					c.gridx = 1;
-					c.gridy = 4;
-					c.weightx = 0;
-					c.gridwidth = 2;
-					c.insets = new Insets( 20 , 0 , 0 , 0 );
-							botonGuardar = new JButton( "Añadir Alumno" );	
-							panelDatosAlum.add( botonGuardar , c);
-					
-					c.fill = GridBagConstraints.HORIZONTAL;
-					c.gridx = 1;
-					c.gridy = 6;
-					c.weightx = 0;
-					c.gridwidth = 2;
-					c.insets = new Insets( 20 , 0 , 0 , 0 );
-							botonListar = new JButton( "Listar Alumnos" );	
-							panelDatosAlum.add( botonListar , c);
-					
-					c.fill = GridBagConstraints.HORIZONTAL;
-					c.gridx = 1;
-					c.gridy = 8;
-					c.weightx = 0;
-					c.gridwidth = 2;
-					c.insets = new Insets( 20 , 0 , 0 , 0 );
-							botonLimpiar = new JButton( "Vaciar Lista" );	
-							panelDatosAlum.add( botonLimpiar , c);		
-							panelAltas.add( panelDatosAlum );			 	
-							
-						//  BAJAS ALUMNOS \\
-						panelBajas = new JPanel();
-						panelBajas.setBackground( Colors.backWhite);
-						panelBajas.setLayout(new GridBagLayout() );
-						panelBajas.setBorder( Borders.border[ 0 ] );
-						panelBajas.setPreferredSize( new Dimension( 1000 , 480 ) );
-						panelBajas.setVisible(false);
-							
-						
-						
-						//  MODIFICAR ALUMNOS \\
-						panelModificar = new JPanel();
-						panelModificar.setBackground( Colors.backWhite);
-						panelModificar.setLayout(new GridBagLayout() );
-						panelModificar.setBorder( Borders.border[ 0 ] );
-						panelModificar.setPreferredSize( new Dimension( 1000 , 480 ) );
-						panelModificar.setVisible(false);
-						
-						
+			
 						
 						//  CONSULTAR ALUMNOS \\
 						panelConsultas = new JPanel();
@@ -262,34 +114,208 @@ public class GestorAlumnos extends JFrame {
 						panelConsultas.setPreferredSize( new Dimension( 1000 , 480 ) );
 						panelConsultas.setVisible(false);
 						
-						
-						
-					this.getContentPane().add( panelInicio );  // Panel Inicial 
-					this.getContentPane().add( panelAltas );   // Panel Altas | Componentes para dar de alta a un usuario
-					this.getContentPane().add( panelBajas );
-					this.getContentPane().add( panelModificar );
+					this.getContentPane().add( panelInicio );  // PANEL INICIAL \\  
 					this.getContentPane().add( panelConsultas );
 				
 				
-					botonVolver = new JButton( "Volver" );
-						botonVolver.setFont( Fonts.fontButton );
-						botonVolver.setFocusable(false);
-						botonVolver.setPreferredSize( new Dimension( 100 , 30 ) );
-					
-									
-					this.getContentPane().add( botonVolver );
 
-					// ACTION LISTENER BOTONES \\
-					ControladorAlumnos st = ControladorAlumnos.instancia();
-					st.setManager(this);
-					botonAltas.addActionListener( st );
-					botonBajas.addActionListener( st );
-					botonVolver.addActionListener( st );
-					botonGuardar.addActionListener( st );
-					botonListar.addActionListener( st );
-					botonLimpiar.addActionListener( st );
+					
 		}
 		
+		private void listeners() {
+				// ACTION LISTENER BOTONES \\
+				ControladorAlumnos st = ControladorAlumnos.instancia();
+				ControladorAlumnosMouse coAlMo = ControladorAlumnosMouse.instancia();
+				st.setManager(this);
+				botonAltas.addActionListener( st ); 		// BotonAltas
+				botonVolver.addActionListener( st ); 		// BotonVolver
+				botonListar.addActionListener( st ); 		// BotonListar
+				botonBorrar.addActionListener( st );		// BotonBorrar
+				botonGuardar.addActionListener( st ); 		// BotonGuardar
+				botonLimpiar.addActionListener( st ); 		// BotonLimpiar
+				botonConsultas.addActionListener( st ); 	// BotonConsultas
+				listaAlumnos.addMouseListener( coAlMo );   	// ListaAlumnosBBDD
+		}
+		
+		
+		private void dibujar() {
+			
+			//  ALTAS ALUMNOS \\	
+								
+					panelAltas = new JPanel();
+					panelAltas.setBackground( Colors.backWhite);
+					panelAltas.setBorder( Borders.border[ 0 ] );
+					panelAltas.setPreferredSize( new Dimension( 1000 , 480 ) );
+					panelAltas.setVisible(false);
+						
+					panelListado = new JPanel();
+							panelListado.setLayout( new BorderLayout() );
+							panelListado.setPreferredSize( new Dimension( 225 , 450 ) );
+							panelListado.setBorder(Borders.border[ 3 ]);
+					
+			// LISTADO PARA VER ALUMNOS EN LA BASE DE DATOS \\
+			
+					JLabel	titulo = new JLabel( "Listado Alumnos" , JLabel.CENTER );	
+							titulo.setFont( Fonts.fontTitleBorder );
+							panelListado.add( "North" , titulo );
+							listaAlumnos = new JList<Alumno>(  );
+							panelListado.add( listaAlumnos );
+				
+					JLabel 	space = new JLabel(" ");
+							space.setBorder( Borders.border[ 6 ] );
+							panelAltas.add( panelListado );
+							panelAltas.add( space );
+		
+			// PANEL PARA INTRODUCIR DATOS DE LOS ALUMNOS \\
+							
+					JPanel	panelDatosAlum = new JPanel();
+							panelDatosAlum.setLayout( new GridBagLayout() );
+							panelDatosAlum.setBorder( Borders.border[ 4 ] );
+							panelDatosAlum.setPreferredSize( new Dimension( 460 , 310 ) );
+							panelDatosAlum.setBackground( Colors.transparentShy );
+											
+								//  DNI ALUMNO \\
+					GridBagConstraints c = new GridBagConstraints();
+					JLabel	lblDni = new JLabel( "DNI: " );   
+							lblDni.setFont( Fonts.fontText );
+									
+					c.fill = GridBagConstraints.HORIZONTAL;
+					c.gridx = 0;
+					c.gridy = 0;
+					c.insets = new Insets (0 , 5 , 0 , 0 );
+							panelDatosAlum.add( lblDni , c);
+												
+					textoDNI = new JTextField( 10 );
+					c.fill = GridBagConstraints.HORIZONTAL;
+					c.gridx = 1;
+					c.gridy = 0;
+					c.weightx = 6;
+								panelDatosAlum.add( textoDNI , c);
+								
+								// FIN DNI ALUMNO \\
+								
+								
+								//  NOMBRE ALUMNO \\
+					JLabel	lblApellido = new JLabel( "Apellido:  " );
+							lblApellido.setFont( Fonts.fontText );		
+					
+					c.fill = GridBagConstraints.HORIZONTAL;
+					c.gridx = 0;
+					c.gridy = 1;
+					c.weightx = 1;
+					c.insets = new Insets (0 , 5 , 0 , 0 );
+							panelDatosAlum.add( lblApellido , c );
+					
+					textoApellido = new JTextField( 10 );
+					c.fill = GridBagConstraints.HORIZONTAL;
+					c.gridx = 1;
+					c.gridy = 1;
+					c.weightx = 6;
+								panelDatosAlum.add( textoApellido , c);
+								// FIN NOMBRE ALUMNO \\
+								
+								
+								// APELLIDO ALUMNO \\
+					JLabel	lblNombre = new JLabel( "Nombre: " );
+							lblNombre.setFont( Fonts.fontText );			
+								
+					c.fill = GridBagConstraints.HORIZONTAL;
+					c.gridx = 2;
+					c.gridy = 0;
+					c.weightx = 1;
+					c.insets = new Insets( 0 , 10 , 0 , 0 );
+							panelDatosAlum.add( lblNombre , c );
+							
+					textoNombre = new JTextField( 10 );		
+					c.fill = GridBagConstraints.HORIZONTAL;
+					c.gridx = 3;
+					c.gridy = 0;
+					c.weightx = 5;
+					c.insets = new Insets( 0 , 0 , 0 , 5 );
+								panelDatosAlum.add( textoNombre , c);
+								// FIN APELLIDO ALUMNO \\
+								
+								
+								// APELLIDO_2 ALUMNO \\
+					JLabel	lblApellido2 = new JLabel( "Apellido 2: " );
+							lblApellido2.setFont( Fonts.fontText );			
+								
+					c.fill = GridBagConstraints.HORIZONTAL;
+					c.gridx = 2;
+					c.gridy = 1;
+					c.weightx = 1;
+					c.insets = new Insets( 0 , 10 , 0 , 0 );
+							panelDatosAlum.add( lblApellido2 , c);
+							
+					textoApellido_2 = new JTextField( 10 ); 
+					c.fill = GridBagConstraints.HORIZONTAL;
+					c.gridx = 3;
+					c.gridy = 1;
+					c.weightx = 5;
+					c.insets = new Insets( 0 , 0 , 0 , 5 );
+								panelDatosAlum.add( textoApellido_2 , c);
+								// FIN APELLIDO_2 ALUMNO \\
+								
+								
+								// BOTON GUARDAR & BOTON LISTAR ALUMNOS\\
+					
+					botonGuardar = new JButton( "Añadir Alumno" );	
+					c.fill = GridBagConstraints.HORIZONTAL;
+					c.gridx = 0;
+					c.gridy = 4;
+					c.weightx = 0;
+					c.gridwidth = 2;
+					c.insets = new Insets( 20 , 0 , 0 , 5 );
+							panelDatosAlum.add( botonGuardar , c);
+								// FIN BOTON AÑADIR ALUMNO \\
+							
+					botonBorrar = new JButton( "Borrar Alumno" );		
+					c.fill = GridBagConstraints.HORIZONTAL;
+					c.gridx = 2;
+					c.gridy = 4;
+					c.weightx = 0;
+					c.gridwidth = 2;
+					c.insets = new Insets( 20 , 5 , 0 , 0 );
+							panelDatosAlum.add( botonBorrar , c);		
+								// FIN BOTON BORRAR  ALUMNO \\
+							
+					botonListar = new JButton( "Ver Alumnos" );			
+					c.fill = GridBagConstraints.HORIZONTAL;
+					c.gridx = 0;
+					c.gridy = 6;
+					c.weightx = 0;
+					c.gridwidth = 2;
+					c.insets = new Insets( 20 , 0 , 0 , 5 );
+							panelDatosAlum.add( botonListar , c);
+								// FIN BOTON VER ALUMNO \\
+					
+					botonModificar = new JButton( "Modificar Alumno" );		
+					c.fill = GridBagConstraints.HORIZONTAL;
+					c.gridx = 2;
+					c.gridy = 6;
+					c.weightx = 0;
+					c.gridwidth = 2;
+					c.insets = new Insets( 20 , 5 , 0 , 0 );
+							panelDatosAlum.add( botonModificar , c);		
+								// FIN BOTON MODIFICAR ALUMNO \\
+							
+					botonLimpiar = new JButton( "Vaciar Lista" );		
+					c.fill = GridBagConstraints.HORIZONTAL;
+					c.gridx = 1;
+					c.gridy = 8;
+					c.weightx = 0;
+					c.gridwidth = 2;
+					c.insets = new Insets( 20 , 0 , 0 , 0 );
+							panelDatosAlum.add( botonLimpiar , c);		
+								// FIN BOTON VACIAR LISTA \\
+											
+			// AÑADIMOS EL PANEL DE LOS DATOS AL PANEL DE ALTAS  \\
+					panelAltas.add( panelDatosAlum ); 			
+					
+			// PANEL ALTAS  | LO AÑADIMOS A LA VENTANA GENERAL
+					this.getContentPane().add( panelAltas );   
+		}
+			
 		// Getters & Setters \\
 		
 		public JPanel getPanelAltas() {
@@ -328,26 +354,6 @@ public class GestorAlumnos extends JFrame {
 			return textoDNI;
 		}
 
-		public JButton getBotonBajas() {
-			return botonBajas;
-		}
-
-		public JPanel getPanelBajas() {
-			return panelBajas;
-		}
-
-		public JButton getBotonModificar() {
-			return botonModificar;
-		}
-
-		public JButton getBotonConsultas() {
-			return botonConsultas;
-		}
-
-		public JPanel getPanelModificar() {
-			return panelModificar;
-		}
-
 		public JPanel getPanelConsultas() {
 			return panelConsultas;
 		}
@@ -367,6 +373,12 @@ public class GestorAlumnos extends JFrame {
 		public JButton getBotonLimpiar() {
 			return botonLimpiar;
 		}
+
+		public JButton getBotonBorrar() {
+			return botonBorrar;
+		}
+
+		
 
 		
 		

@@ -31,6 +31,11 @@ public class ControladorLogin implements ActionListener{
 		main = new MainMenu();
 		log.dispose();
 		
+		if( id.equals("") ) {
+			
+			main.getBienvenida().setText( main.getBienvenida().getText() + "Unknown" );
+			
+		}else {
 			try {
 				conMysql = ConexionMySql.instancia().conectarMySql();
 				
@@ -38,9 +43,7 @@ public class ControladorLogin implements ActionListener{
 					ps.setString(1, id );
 				ResultSet rs = ps.executeQuery();
 				
-				if( id.equals("") ) {
-					main.getBienvenida().setText( main.getBienvenida().getText() + "Unknown" );
-				}
+				
 				while( rs.next() ) {
 					
 						if(rs.getString( "apellido" ) != null ) {
@@ -58,7 +61,7 @@ public class ControladorLogin implements ActionListener{
 				e1.printStackTrace();
 			}
 				
+		}	
 			
-			
-		}
+	}
 }
