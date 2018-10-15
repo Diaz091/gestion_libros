@@ -58,16 +58,26 @@ public class ControladorAlumnos implements ActionListener{
 							
 							stManager.getPanelAltas().setVisible( true );
 						}		
-					
+					// BOTON AÑADIR ALUMNO | AÑADE UN ALUMNO A LA BASE DE DATOS
 					if( ( JButton ) e.getSource() == stManager.getBotonGuardar() ) {
+						PreparedStatement	ps;
 						try {
 							conMysql = ConexionMySql.instancia().conectarMySql();
-							
-							PreparedStatement	ps = conMysql.prepareStatement( "Insert into alumnos values (?,?,?,?)" );
-												ps.setString( 1 , stManager.getTextoDNI().getText() );
-												ps.setString( 2 , stManager.getTextoNombre().getText() );
-												ps.setString( 3 , stManager.getTextoApellido().getText() );
-												ps.setString( 4 , stManager.getTextoApellido_2().getText() );
+							if(stManager.getTextoDNI().getText().length() == 8 ) {
+								ps = conMysql.prepareStatement( "Insert into alumnos values (?,?,?,?)" );
+									ps.setString( 1 , stManager.getTextoDNI().getText()+Alumno.calculaLetra( Integer.parseInt( stManager.getTextoDNI().getText() ) ) );
+									ps.setString( 2 , stManager.getTextoNombre().getText() );
+									ps.setString( 3 , stManager.getTextoApellido().getText() );
+									ps.setString( 4 , stManager.getTextoApellido_2().getText() );
+								JOptionPane.showMessageDialog(null, "El alumno " + stManager.getTextoNombre().getText() + " se añadio correctamente.");
+							}else {
+								ps = conMysql.prepareStatement( "Insert into alumnos values (?,?,?,?)" );
+										ps.setString( 1 , stManager.getTextoDNI().getText() );
+										ps.setString( 2 , stManager.getTextoNombre().getText() );
+										ps.setString( 3 , stManager.getTextoApellido().getText() );
+										ps.setString( 4 , stManager.getTextoApellido_2().getText() );
+								JOptionPane.showMessageDialog(null, "El alumno " + stManager.getTextoNombre().getText() + " se añadio correctamente.");
+								}
 							ps.executeUpdate();
 							conMysql.close();
 						} catch (SQLException e1) {
@@ -77,14 +87,12 @@ public class ControladorAlumnos implements ActionListener{
 					}
 					
 					if ( ( JButton ) e.getSource() == stManager.getBotonListar() ) {
-						//DefaultListModel<Alumno> alu = DataResource.instancia().modeloAlumno();
-						DefaultListModel<Alumno> alu = new DefaultListModel <Alumno>();
-							alu.addElement( new Alumno("72750583L", "Unai", "Díaz de Garayo", "Jiménez" ) );
-						stManager.getListaAlumnos().setModel(alu);
-						/*stManager.getTextoDNI().setText("");
-						stManager.getTextoNombre().setText(""); 
-						stManager.getTextoApellido().setText("");
-						stManager.getTextoApellido_2().setText("");*/
+						DefaultListModel < Alumno > alu = DataResource.instancia().modeloAlumno();
+							stManager.getListaAlumnos().setModel(alu);
+							stManager.getTextoDNI().setText("");
+							stManager.getTextoNombre().setText(""); 
+							stManager.getTextoApellido().setText("");
+							stManager.getTextoApellido_2().setText("");
 					}
 					
 					if ( ( JButton ) e.getSource() == stManager.getBotonLimpiar() ) {
@@ -92,8 +100,19 @@ public class ControladorAlumnos implements ActionListener{
 						DefaultListModel < Alumno > alumno = ( DefaultListModel < Alumno > ) stManager.getListaAlumnos().getModel();
 						alumno.removeAllElements();
 						alumno.clear();
-						stManager.getListaAlumnos().setModel( alumno );
+						
 											
+					}
+					
+					if ( ( JButton ) e.getSource() == stManager.getBotonBorrar() ) {
+						
+						Alumno alu = stManager.getListaAlumnos().getSelectedValue();
+						DataResource.instancia().borrarAlumno( alu );
+						
+						int indice = stManager.getListaAlumnos().getSelectedIndex();
+						DefaultListModel < Alumno > aluMod = (DefaultListModel<Alumno>) stManager.getListaAlumnos().getModel();
+						aluMod.removeElementAt(indice);
+						
 					}
 					
 			}

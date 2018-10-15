@@ -1,10 +1,13 @@
 package interfaces;
 
 
+import java.awt.Cursor;
 import java.awt.Dimension;
 
+import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -20,8 +23,9 @@ public class Login extends JFrame{
 	
 	private static final long serialVersionUID = 7432826939820483800L;
 	
-	private JButton login;
-	private JTextField txtID;
+	private JButton 	login;
+	private JTextField 	txtID;
+	private JLabel	 	idUsus;
 	
 	
 		 Login(){
@@ -60,6 +64,8 @@ public class Login extends JFrame{
 					login = new JButton(" Login ");
 					login.setFocusable( false );
 				
+					idUsus = new JLabel( new ImageIcon( "img/help.png" ) ) ;
+					idUsus.setCursor( Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 					txtID = new JTextField(13);
 					ControladorLogin lc = new ControladorLogin(this);
 					login.addActionListener(lc);
@@ -67,6 +73,7 @@ public class Login extends JFrame{
 					panelLogin.add( textoID );
 					panelLogin.add( txtID );
 					panelLogin.add( login );
+					panelLogin.add( idUsus );
 					
 				this.getContentPane().add( titulo );	
 				this.getContentPane().add( panelLogin );

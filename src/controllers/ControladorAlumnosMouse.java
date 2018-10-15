@@ -27,14 +27,11 @@ public class ControladorAlumnosMouse extends MouseAdapter{
 	public void mouseClicked(MouseEvent e) {
 		
 		if ( e.getClickCount() >= 2) {
-			System.out.println(stManager);
-			
-			/*
 			Alumno	alu = stManager.getListaAlumnos().getSelectedValue();
-				stManager.getTextoDNI().setText( alu.getNombre() );
-				stManager.getTextoNombre().setText( alu.getNombre() ); 
-				stManager.getTextoApellido().setText( alu.getApell_1() );
-				stManager.getTextoApellido_2().setText( alu.getApell_2() );*/ 
+				stManager.getTextoDNI().setText(		alu.getNombre()  );
+				stManager.getTextoNombre().setText( 	alu.getNombre()  ); 
+				stManager.getTextoApellido().setText( 	alu.getApell_1() );
+				stManager.getTextoApellido_2().setText( alu.getApell_2() ); 
 		}
 		
 		

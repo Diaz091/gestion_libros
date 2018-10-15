@@ -24,7 +24,10 @@ public class DataResource {
 				instancia = new DataResource();
 		return instancia; 
 	}
-	
+	/**
+	 * Método qué devuelve un ArrayList con los Alumnos dados de alta en la BBDD. Si no hay alumnos JOpcionPane con mensaje informativo.
+	 * @return ArrayList<Alumno> 
+	 */
 	public ArrayList<Alumno> verAlumnos(){
 		ArrayList<Alumno> alumnos = new ArrayList<Alumno>();
 		
@@ -41,6 +44,9 @@ public class DataResource {
 			}
 			rs.close();
 			
+			if( alumnos.isEmpty() ) {
+				JOptionPane.showMessageDialog(null, "Actualmente, no hay ningún alumno dado de alta en nuestra Base de Datos", "AVISO", JOptionPane.INFORMATION_MESSAGE);
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -50,6 +56,10 @@ public class DataResource {
 		return alumnos; 
 	}
 	
+	/** 
+	 * Método que devuelve un modelo con los Alumnos de la BBDD. Si no hay alumnos JOpcionPane con mensaje informativo.
+	 * @return DefaultListModel<Alumno>
+	 */
 	public DefaultListModel<Alumno> modeloAlumno(){
 		DefaultListModel<Alumno> alumnos = new DefaultListModel<Alumno>();
 		try {	
@@ -67,13 +77,17 @@ public class DataResource {
 				}
 			}
 			rs.close();
-		
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+			if( alumnos.isEmpty() ) {
+				JOptionPane.showMessageDialog(null, "Actualmente, no hay ningún alumno dado de alta en nuestra Base de Datos", "AVISO", JOptionPane.INFORMATION_MESSAGE);
+			}
+		} catch (SQLException e) {}
 		return alumnos;
 	}
-	
+	/**
+	 * Método para borrar un alumno de la BBDD
+	 * @param alu
+	 * @return JOptionPane con mensaje.
+	 */
 	public void borrarAlumno(Alumno alu) {
 		Alumno al = alu;
 		try {
@@ -82,10 +96,10 @@ public class DataResource {
 			ps.executeUpdate();
 			
 			JOptionPane.showMessageDialog( null, "El alumno " + al.getNombre() + ", con DNI " +al.getDni() + " fué eliminado correctamente. " );
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+		} catch (SQLException e) {}
 		
 	}
+	
+	
 	
 }

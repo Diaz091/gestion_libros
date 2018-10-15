@@ -123,7 +123,8 @@ public class GestorAlumnos extends JFrame {
 		}
 		
 		private void listeners() {
-				// ACTION LISTENER BOTONES \\
+				// ACTION LISTENER'S \\
+				ControladorAlumnosMouse.setManager(this);
 				ControladorAlumnos st = ControladorAlumnos.instancia();
 				ControladorAlumnosMouse coAlMo = ControladorAlumnosMouse.instancia();
 				st.setManager(this);

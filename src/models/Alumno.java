@@ -20,7 +20,12 @@ public class Alumno {
 		return dni + ", " +apell_1 + ", " + nombre ;
 	}
 
-	
+	public static char  calculaLetra(int dni){
+		String juegoCaracteres="TRWAGMYFPDXBNJZSQVHLCKE";
+			int modulo= dni % 23;
+	   		char letra = juegoCaracteres.charAt(modulo);
+	   	return letra; 
+    } 
 	
 			// Getters \\
 	

@@ -226,6 +226,8 @@ public class MainMenu extends JFrame {
 						public void actionPerformed(ActionEvent e) {
 							dispose();
 							
+							
+							
 						}
 					});
 					pnSaludo.add( imagen );
