@@ -82,6 +82,7 @@ public class ControladorAlumnos implements ActionListener{
 							conMysql.close();
 						} catch (SQLException e1) {
 							JOptionPane.showMessageDialog(null, "El Alumno con DNI " + stManager.getTextoDNI().getText() + ". Ya existe en nuestra Base de Datos. ");
+							//TODO Revisar si existe en la base de datos
 						}
 																
 					}

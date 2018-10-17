@@ -85,6 +85,10 @@ public class Login extends JFrame{
 		}
 
 		
+		public JLabel getIdUsus() {
+			return idUsus;
+		}
+
 		public static void main(String[] args) {
 		
 			new Login();

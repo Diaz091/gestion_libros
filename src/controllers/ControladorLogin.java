@@ -9,6 +9,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 
 import interfaces.Login;
 import interfaces.MainMenu;
@@ -62,6 +63,10 @@ public class ControladorLogin implements ActionListener{
 			}
 				
 		}	
+		
+		if( e.getSource() == log.getIdUsus() ) {
 			
+			JOptionPane.showMessageDialog(null, "hey", "ID Usuarios", JOptionPane.INFORMATION_MESSAGE);
+		}
 	}
 }

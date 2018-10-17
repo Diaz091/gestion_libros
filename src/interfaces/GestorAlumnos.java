@@ -38,6 +38,9 @@ public class GestorAlumnos extends JFrame {
 	private JPanel						panelListado;
 	private JButton 					botonGuardar , botonListar , botonLimpiar , botonBorrar , botonModificar;
 	
+	// COMPONENTES CONSULTAS \\
+	
+	
 	
 		public GestorAlumnos(){
 			ImageTest imgBack = new ImageTest( "img/fondoAlum.jpg" );
