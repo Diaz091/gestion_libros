@@ -13,6 +13,7 @@ public class DataResource {
 	
 	private Connection conMysql;
 	private static final String ALUMNOCAMPOS = "Select dni , nombre, apellido , apellido_2 ";
+	private static final String LIBROCAMPOS  = "Select codigo_barras , isbn , titulo , autor , editorial , asignatura , estado ";
 	private DataResource() {
 		conMysql = ConexionMySql.instancia().conectarMySql();		
 	}
@@ -24,6 +25,7 @@ public class DataResource {
 				instancia = new DataResource();
 		return instancia; 
 	}
+											// 	ALUMNOS \\
 	/**
 	 * Método qué devuelve un ArrayList con los Alumnos dados de alta en la BBDD. Si no hay alumnos JOpcionPane con mensaje informativo.
 	 * @return ArrayList<Alumno> 
@@ -98,6 +100,50 @@ public class DataResource {
 		} catch (SQLException e) {}
 		
 	}
+	
+	
+							// FIN ALUMNOS \\
+	
+							// LIBROS \\
+	/**
+	 * Método que carga DefaultListModel
+	 * @return DefaultListModel
+	 */
+	public DefaultListModel<Libro> cargarModelo(){
+		DefaultListModel<Libro>  modeloLibs = new DefaultListModel<Libro>();
+		EstadoLibro eLibro = null;
+		try {	
+			PreparedStatement ps = conMysql.prepareStatement( LIBROCAMPOS + "from libros" );
+			ResultSet rs = ps.executeQuery();
+			while ( rs.next() ) {
+				 				
+				 	Libro lib = new Libro(
+								rs.getString( "codigo_barras" ),
+								rs.getString( "isbn" ),
+								rs.getString( "titulo" ),
+								rs.getString( "autor" ),
+								rs.getString( "editorial" ),
+								rs.getString( "asignatura" ),
+								EstadoLibro.getEstado(rs.getString( "estado" ) ) ); 
+					
+					modeloLibs.addElement( lib );
+			}
+			rs.close();
+			if( modeloLibs.isEmpty() ) {
+				JOptionPane.showMessageDialog(null, "Actualmente, no hay ningún alumno dado de alta en nuestra Base de Datos", "AVISO", JOptionPane.INFORMATION_MESSAGE);
+			}
+		} catch (SQLException e) {}
+	
+		
+		
+		
+		return modeloLibs; 
+	}
+	
+	
+	
+	
+							// USUARIOS LOGIN\\
 	/**
 	 * @return ID Usuario + Nombre Usuario;
 	 */
