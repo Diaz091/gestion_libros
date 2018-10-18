@@ -104,9 +104,10 @@ public class MainMenu extends JFrame {
 							// Listener Para el BotonAlumnos, el cual abrira BookManager. 
 							// El cual se encargade gestionar los alumnos.
 							
-								ControladorAlumnos stC = ControladorAlumnos.instancia();
+								ControladorAlumnos stC = ControladorAlumnos.instancia()	;
 								stC.setMain(this);
-								botonAlumnos.addActionListener(stC);
+								botonAlumnos.addActionListener( stC );
+								botonLibros.addActionListener( stC );
 
 							
 					// - panelOpciones | 1er Boton + Etiqueta para Alumnos		

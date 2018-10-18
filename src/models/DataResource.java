@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
@@ -101,16 +102,17 @@ public class DataResource {
 		
 	}
 	
-	
 							// FIN ALUMNOS \\
+	
+	
 	
 							// LIBROS \\
 	/**
 	 * Método que carga DefaultListModel
 	 * @return DefaultListModel
 	 */
-	public DefaultListModel<Libro> cargarModelo(){
-		DefaultListModel<Libro>  modeloLibs = new DefaultListModel<Libro>();
+	public DefaultListModel < Libro > cargarModelo(){
+		DefaultListModel < Libro >  modeloLibs = new DefaultListModel < Libro >();
 		EstadoLibro eLibro = null;
 		try {	
 			PreparedStatement ps = conMysql.prepareStatement( LIBROCAMPOS + "from libros" );
@@ -139,8 +141,6 @@ public class DataResource {
 		
 		return modeloLibs; 
 	}
-	
-	
 	
 	
 							// USUARIOS LOGIN\\

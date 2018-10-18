@@ -1,5 +1,7 @@
 package models;
 
+import javax.swing.DefaultComboBoxModel;
+
 public enum EstadoLibro {
 	
 	NUEVO("Nuevo"),
@@ -29,6 +31,17 @@ public enum EstadoLibro {
 		
 		return null;
 	}
+	
+	public static DefaultComboBoxModel < EstadoLibro > cargarModeloCombo(){
+		DefaultComboBoxModel < EstadoLibro > modeloEstados = new DefaultComboBoxModel < EstadoLibro >();
+		
+			for( EstadoLibro es : EstadoLibro.values() ) {
+				modeloEstados.addElement( es );
+			}
+		
+		return modeloEstados;
+	}
+	
 	@Override
 	public String toString() {
 		return getTexto();
