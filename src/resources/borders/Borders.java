@@ -1,10 +1,13 @@
-package resources;
+package resources.borders;
 
 import java.awt.Color;
 
 import javax.swing.BorderFactory;
 import javax.swing.border.Border;
 import javax.swing.border.TitledBorder;
+
+import resources.colors.Colors;
+import resources.fonts.Fonts;
 /**
  * @author Unai Díaz de Garayo
  */

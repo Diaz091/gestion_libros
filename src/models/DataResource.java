@@ -94,12 +94,29 @@ public class DataResource {
 			PreparedStatement ps = conMysql.prepareStatement("DELETE FROM alumnos where dni = ?" );
 			ps.setString(1 , al.getDni());
 			ps.executeUpdate();
-			
 			JOptionPane.showMessageDialog( null, "El alumno " + al.getNombre() + ", con DNI " +al.getDni() + " fué eliminado correctamente. " );
 		} catch (SQLException e) {}
 		
 	}
-	
-	
+	/**
+	 * @return ID Usuario + Nombre Usuario;
+	 */
+	public String idUsuarios() {
+		String str = "<html>";
+			PreparedStatement ps;
+			try {
+				ps = conMysql.prepareStatement("Select id , nombre from users" );
+				ResultSet rs = ps.executeQuery();
+				while ( rs.next() ) {
+					str += "- ID: " + rs.getString( "id" ) + " - Nombre: " + rs.getString( "nombre" ) + "<br>";
+				}
+				str+="</html>";
+				rs.close();
+				ps.close();
+					return str;
+			} catch (SQLException e) {}
+					
+			return null;
+	}
 	
 }

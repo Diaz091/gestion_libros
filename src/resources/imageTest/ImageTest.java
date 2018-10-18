@@ -1,4 +1,4 @@
-package resources;
+package resources.imageTest;
 
 import java.awt.Dimension;
 import java.awt.Graphics;

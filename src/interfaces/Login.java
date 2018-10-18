@@ -14,10 +14,10 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import controllers.ControladorLogin;
-import resources.Colors;
-import resources.Fonts;
-import resources.ImageTest;
+import controller.login.ControladorLogin;
+import resources.colors.Colors;
+import resources.fonts.Fonts;
+import resources.imageTest.ImageTest;
 
 public class Login extends JFrame{
 	
@@ -27,12 +27,11 @@ public class Login extends JFrame{
 	private JTextField 	txtID;
 	private JLabel	 	idUsus;
 	
-	
 		 Login(){
-			ImageTest img = new ImageTest("img/loginBack.jpg");
-			this.setContentPane(img );
-				
+			ImageTest img = new ImageTest( "img/loginBack.jpg" );
+			this.setContentPane( img );
 			dibujar();
+			new ControladorLogin( this );
 			settings();
 		}
 	
@@ -40,7 +39,7 @@ public class Login extends JFrame{
 			this.setDefaultCloseOperation( DISPOSE_ON_CLOSE );
 			this.setSize( 320 , 240 );
 			this.setLocationRelativeTo( null );
-			this.setResizable(false);
+			this.setResizable( false );
 			this.setLayout( new BoxLayout(this.getContentPane(), BoxLayout.Y_AXIS ) );
 			this.setVisible( true );
 		
@@ -48,7 +47,7 @@ public class Login extends JFrame{
 		
 		private void dibujar() {
 			this.add(Box.createRigidArea( new Dimension( 0 , 15 ) ) );
-			ImageTest img = new ImageTest("img/loginBack.jpg");
+			ImageTest img = new ImageTest( "img/loginBack.jpg" );
 			
 			JLabel	titulo = new JLabel( "Inicio de Sesión  " );
 					titulo.setFont( Fonts.fontText2 );
@@ -67,9 +66,7 @@ public class Login extends JFrame{
 					idUsus = new JLabel( new ImageIcon( "img/help.png" ) ) ;
 					idUsus.setCursor( Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 					txtID = new JTextField(13);
-					ControladorLogin lc = new ControladorLogin(this);
-					login.addActionListener(lc);
-				
+							
 					panelLogin.add( textoID );
 					panelLogin.add( txtID );
 					panelLogin.add( login );
@@ -83,16 +80,17 @@ public class Login extends JFrame{
 		public JTextField getTxt() {
 			return txtID;
 		}
-
-		
+	
 		public JLabel getIdUsus() {
 			return idUsus;
 		}
 
+		public JButton getLogin() {
+			return login;
+		}
+
 		public static void main(String[] args) {
-		
 			new Login();
-	
 		}
 
 }

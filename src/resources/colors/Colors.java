@@ -1,4 +1,4 @@
-package resources;
+package resources.colors;
 
 import java.awt.Color;
 /**

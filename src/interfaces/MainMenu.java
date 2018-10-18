@@ -15,10 +15,10 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import controllers.ControladorAlumnos;
-import resources.Colors;
-import resources.Fonts;
-import resources.ImageTest;
+import controllers.alumnos.ControladorAlumnos;
+import resources.colors.Colors;
+import resources.fonts.Fonts;
+import resources.imageTest.ImageTest;
 
 
 public class MainMenu extends JFrame {
@@ -225,9 +225,6 @@ public class MainMenu extends JFrame {
 						@Override
 						public void actionPerformed(ActionEvent e) {
 							dispose();
-							
-							
-							
 						}
 					});
 					pnSaludo.add( imagen );

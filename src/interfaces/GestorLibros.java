@@ -10,7 +10,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import resources.Fonts;
+import resources.fonts.Fonts;
 /**
  * @since
  * @version 1.0

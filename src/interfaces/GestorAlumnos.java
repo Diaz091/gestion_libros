@@ -15,15 +15,13 @@ import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-
-import controllers.ControladorAlumnos;
-import controllers.ControladorAlumnosMouse;
+import controllers.alumnos.ControladorAlumnos;
+import controllers.alumnos.ControladorAlumnosMouse;
 import models.Alumno;
-
-import resources.Borders;
-import resources.Colors;
-import resources.Fonts;
-import resources.ImageTest;
+import resources.borders.Borders;
+import resources.colors.Colors;
+import resources.fonts.Fonts;
+import resources.imageTest.ImageTest;
 
 public class GestorAlumnos extends JFrame {
 
@@ -39,9 +37,6 @@ public class GestorAlumnos extends JFrame {
 	private JButton 					botonGuardar , botonListar , botonLimpiar , botonBorrar , botonModificar;
 	
 	// COMPONENTES CONSULTAS \\
-	
-	
-	
 		public GestorAlumnos(){
 			ImageTest imgBack = new ImageTest( "img/fondoAlum.jpg" );
 			this.setContentPane( imgBack );
@@ -61,14 +56,11 @@ public class GestorAlumnos extends JFrame {
 		private void components() {
 			dibujarPanel();
 			dibujar();
-			
-
 			botonVolver = new JButton( "Volver" );
 				botonVolver.setFont( Fonts.fontButton );
 				botonVolver.setFocusable(false);
 				botonVolver.setPreferredSize( new Dimension( 100 , 30 ) );
-			
-							
+								
 			this.getContentPane().add( botonVolver );
 			
 			listeners();
@@ -381,13 +373,4 @@ public class GestorAlumnos extends JFrame {
 		public JButton getBotonBorrar() {
 			return botonBorrar;
 		}
-
-		
-
-		
-		
-		
-		
-		
-
 }

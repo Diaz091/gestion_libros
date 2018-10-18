@@ -1,24 +1,25 @@
-package controllers;
+package controllers.alumnos;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 
-import interfaces.MainMenu;
 import models.Alumno;
 import models.ConexionMySql;
 import models.DataResource;
+
+import interfaces.MainMenu;
 import interfaces.GestorAlumnos;
 
 public class ControladorAlumnos implements ActionListener{
 	private static ControladorAlumnos INSTANCIA;
+	
 	private GestorAlumnos stManager;
 	private Connection conMysql;
 	private MainMenu main;
@@ -28,7 +29,7 @@ public class ControladorAlumnos implements ActionListener{
 			INSTANCIA =  new ControladorAlumnos();
 		return INSTANCIA;
 	}
-	
+		
 	private ControladorAlumnos() {}
 		
 	public void setMain( MainMenu mainM ) {
@@ -50,7 +51,6 @@ public class ControladorAlumnos implements ActionListener{
 				instancia().setMain( new MainMenu() );
 				stManager.dispose();
 			}
-			
 			// LISTENER PARA DAR DE ALTA ALUMNOS EN LA BASE DE DATOS \\
 					if( ( JButton ) e.getSource() == stManager.getBotonAltas() ) {
 						if( stManager.getPanelConsultas().isVisible()) 
@@ -82,9 +82,7 @@ public class ControladorAlumnos implements ActionListener{
 							conMysql.close();
 						} catch (SQLException e1) {
 							JOptionPane.showMessageDialog(null, "El Alumno con DNI " + stManager.getTextoDNI().getText() + ". Ya existe en nuestra Base de Datos. ");
-							//TODO Revisar si existe en la base de datos
 						}
-																
 					}
 					
 					if ( ( JButton ) e.getSource() == stManager.getBotonListar() ) {
