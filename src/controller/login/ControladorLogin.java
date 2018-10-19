@@ -22,8 +22,17 @@ public class ControladorLogin {
 	private Login log;
 	private MainMenu main;
 	private Connection conMysql;
-					
-	public ControladorLogin( Login lo ){
+	private static ControladorLogin instancia;
+	
+	private ControladorLogin() {}
+
+	public static ControladorLogin instancia() {
+		if(instancia== null) 
+			instancia = new ControladorLogin();
+		return instancia;
+	}
+	
+	public void setLogin( Login lo ){
 		this.log = lo;
 		login();
 	}
@@ -37,7 +46,7 @@ public class ControladorLogin {
 			public void actionPerformed(ActionEvent e) {
 				String id = log.getTxt().getText();
 				
-				main = new MainMenu();
+				main = MainMenu.instancia();
 				log.dispose();
 				
 				if( id.equals("") ) {
@@ -88,4 +97,10 @@ public class ControladorLogin {
 	
 	
 	}
+
+
+	public Login getLog() {
+		return log;
+	}
+	
 }

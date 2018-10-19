@@ -15,7 +15,7 @@ import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import controllers.alumnos.ControladorAlumnos;
+import controllers.alumnos.ControladorAlumnosOrig;
 import controllers.alumnos.ControladorAlumnosMouse;
 import models.Alumno;
 import resources.borders.Borders;
@@ -26,7 +26,8 @@ import resources.imageTest.ImageTest;
 public class GestorAlumnos extends JFrame {
 
 	private static final long serialVersionUID = 3788394061045167747L;
-
+	private static GestorAlumnos instancia;
+	
 	private JButton botonAltas  , botonConsultas , botonVolver;
 	private JPanel  panelInicio , panelAltas     , panelConsultas;
 	
@@ -36,8 +37,15 @@ public class GestorAlumnos extends JFrame {
 	private JPanel						panelListado;
 	private JButton 					botonGuardar , botonListar , botonLimpiar , botonBorrar , botonModificar;
 	
-	// COMPONENTES CONSULTAS \\
-		public GestorAlumnos(){
+	
+	
+		public static GestorAlumnos instancia() {
+			if(instancia == null)
+				instancia = new GestorAlumnos();
+			return instancia;
+		}
+		
+		private  GestorAlumnos(){
 			ImageTest imgBack = new ImageTest( "img/fondoAlum.jpg" );
 			this.setContentPane( imgBack );
 			components();
@@ -120,17 +128,17 @@ public class GestorAlumnos extends JFrame {
 		private void listeners() {
 				// ACTION LISTENER'S \\
 				ControladorAlumnosMouse.setManager(this);
-				ControladorAlumnos st = ControladorAlumnos.instancia();
+				ControladorAlumnosOrig st = ControladorAlumnosOrig.instancia();
 				ControladorAlumnosMouse coAlMo = ControladorAlumnosMouse.instancia();
-				st.setManager(this);
-				botonAltas.addActionListener( st ); 		// BotonAltas
+				ControladorAlumnosOrig.setManager(this);
+			/*	botonAltas.addActionListener( st ); 		// BotonAltas
 				botonVolver.addActionListener( st ); 		// BotonVolver
 				botonListar.addActionListener( st ); 		// BotonListar
 				botonBorrar.addActionListener( st );		// BotonBorrar
 				botonGuardar.addActionListener( st ); 		// BotonGuardar
 				botonLimpiar.addActionListener( st ); 		// BotonLimpiar
 				botonConsultas.addActionListener( st ); 	// BotonConsultas
-				listaAlumnos.addMouseListener( coAlMo );   	// ListaAlumnosBBDD
+				listaAlumnos.addMouseListener( coAlMo );   	// ListaAlumnosBBDD*/
 		}
 		
 		

@@ -10,6 +10,7 @@ import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 
+import controller.mainMenu.ControladorMainMenu;
 import models.Alumno;
 import models.ConexionMySql;
 import models.DataResource;
@@ -17,36 +18,49 @@ import models.DataResource;
 import interfaces.MainMenu;
 import interfaces.GestorAlumnos;
 
-public class ControladorAlumnos implements ActionListener{
-	private static ControladorAlumnos INSTANCIA;
+public class ControladorAlumnosOrig{
+	private static ControladorAlumnosOrig INSTANCIA;
 	
 	private static GestorAlumnos stManager;
 	private Connection conMysql;
-	private MainMenu main;
 	
-	public static ControladorAlumnos instancia() {
+	public static ControladorAlumnosOrig instancia() {
 		if ( INSTANCIA == null ) 
-			INSTANCIA =  new ControladorAlumnos();
+			INSTANCIA =  new ControladorAlumnosOrig();
 		return INSTANCIA;
 	}
 		
-	private ControladorAlumnos() {}
+	private ControladorAlumnosOrig() {
 		
-	public void setMain( MainMenu mainM ) {
-		this.main = mainM;
-	}	
+	}
+	public void iniciar() {
+		cerrar();
+	}
+	
+	
+	
+	
+	private void cerrar() {
+		
+		stManager.getBotonVolver().addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				ControladorMainMenu.instancia().setMain( MainMenu.instancia());
+				stManager.dispose();
+				
+			}
+		});
+	}
 
 	public static void setManager( GestorAlumnos stuM ) {
 		stManager = stuM;
 	}
-	
+	/*
 	@Override
 	public void actionPerformed( ActionEvent e ) {
 	
-			if( ( JButton ) e.getSource() == stManager.getBotonVolver() ) {
-				instancia().setMain( MainMenu.instancia() );
-				stManager.dispose();
-			}
+			
 			// LISTENER PARA DAR DE ALTA ALUMNOS EN LA BASE DE DATOS \\
 					if( ( JButton ) e.getSource() == stManager.getBotonAltas() ) {
 						if( stManager.getPanelConsultas().isVisible()) 
@@ -110,7 +124,7 @@ public class ControladorAlumnos implements ActionListener{
 						
 					}
 					
-			}
+			}*/
 
 	public GestorAlumnos getStManager() {
 		return stManager;

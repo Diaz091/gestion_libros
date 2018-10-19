@@ -31,7 +31,7 @@ public class Login extends JFrame{
 			ImageTest img = new ImageTest( "img/loginBack.jpg" );
 			this.setContentPane( img );
 			dibujar();
-			new ControladorLogin( this );
+			ControladorLogin.instancia().setLogin(this);
 			settings();
 		}
 	

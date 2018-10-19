@@ -46,7 +46,6 @@ public class GestorLibros extends JFrame{
 	}
 	
 	private void settings() {
-		
 		this.setDefaultCloseOperation( DISPOSE_ON_CLOSE );
 		this.setTitle( "Gestor de Alumnos" );
 		this.setResizable( false );
