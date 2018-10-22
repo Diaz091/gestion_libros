@@ -24,6 +24,7 @@ import models.Libro;
 import resources.borders.Borders;
 import resources.colors.Colors;
 import resources.fonts.Fonts;
+import resources.imageTest.ImageTest;
 
 /**
  * @since
@@ -33,13 +34,15 @@ public class GestorLibros extends JFrame{
 	
 	private static final long serialVersionUID = -3702218765809391813L;
 	
-	private JTextField									txtISBN 	, txtTitulo 	, txtAutor , txtEditorial , txtAsignatura; 
+	private JTextField									txtCodigo	, txtISBN	 	, txtTitulo 	,  txtAutor  , txtEditorial , txtAsignatura; 
 	private JButton										botonAñadir , botonBorrar	, botonListar;
 	private DefaultListModel 		< Libro > 			modeloListaLibros;
 	private JList 					< Libro >			listaLibros;
 	private JComboBox				< EstadoLibro > 	cmbEstados;
 	
 	GestorLibros(){
+		ImageTest imgBack = new ImageTest( "img/try4.jpg" );
+		this.setContentPane( imgBack );
 		components();
 		settings();
 	}
@@ -91,80 +94,94 @@ public class GestorLibros extends JFrame{
 					panelDatosLibro.setPreferredSize( new Dimension( 240 , 310 ) );
 					panelDatosLibro.setBackground( Colors.transparentShy );
 					
-			GridBagConstraints c = new GridBagConstraints();		
+			GridBagConstraints c = new GridBagConstraints();	
 			c.gridx = 0;
 			c.gridy = 0;
+			c.fill  = GridBagConstraints.HORIZONTAL;
+			c.insets = new Insets( 10 , 0 , 0 , 0 );
+			JLabel	lblCodigo = new JLabel( "Codigo: " );
+					lblCodigo.setFont( Fonts.fontTitleBorder );
+			panelDatosLibro.add( lblCodigo , c );
+			c.gridx = 1;
+			c.gridy = 0;
+			c.fill  = GridBagConstraints.HORIZONTAL;
+					txtISBN = new JTextField( 10 );
+			panelDatosLibro.add( txtISBN , c );
+				//	FIN CODIGO //
+			
+			c.gridx = 0;
+			c.gridy = 1;
 			c.fill  = GridBagConstraints.HORIZONTAL;
 			c.insets = new Insets( 10 , 0 , 0 , 0 );
 			JLabel	lblISBN = new JLabel( "ISBN: " );
 					lblISBN.setFont( Fonts.fontTitleBorder );
 			panelDatosLibro.add( lblISBN , c );
 			c.gridx = 1;
-			c.gridy = 0;
+			c.gridy = 1;
 			c.fill  = GridBagConstraints.HORIZONTAL;
 					txtISBN = new JTextField( 10 );
 			panelDatosLibro.add( txtISBN , c );
 				//	FIN ISBN //
 			
 			c.gridx = 0;
-			c.gridy = 1;
+			c.gridy = 2;
 			c.fill  = GridBagConstraints.HORIZONTAL;
 			JLabel 	lblTitulo = new JLabel( "Título: " );
 					lblTitulo.setFont( Fonts.fontTitleBorder );
 			panelDatosLibro.add( lblTitulo , c );
 			c.gridx = 1;	
-			c.gridy = 1;
+			c.gridy = 2;
 			c.fill  = GridBagConstraints.HORIZONTAL;
 					txtTitulo = new JTextField( 10 );
 			panelDatosLibro.add( txtTitulo , c );
 				// FIN TITULO //
 			
 			c.gridx = 0;	
-			c.gridy = 2;
+			c.gridy = 3;
 			c.fill  = GridBagConstraints.HORIZONTAL;
 			JLabel	lblAutor = new JLabel( "Autor: " );
 					lblAutor.setFont( Fonts.fontTitleBorder );
 			panelDatosLibro.add( lblAutor , c );
 			c.gridx = 1;	
-			c.gridy = 2;
+			c.gridy = 3;
 			c.fill  = GridBagConstraints.HORIZONTAL;			
 					txtAutor = new JTextField( 10 );
 			panelDatosLibro.add( txtAutor , c );
 				// FIN AUTOR //
 			
 			c.gridx = 0;	
-			c.gridy = 3;
+			c.gridy = 4;
 			c.fill  = GridBagConstraints.HORIZONTAL;
 			JLabel	lblEditorial = new JLabel( "Editorial: " );
 					lblEditorial.setFont( Fonts.fontTitleBorder );
 			panelDatosLibro.add( lblEditorial , c );
 			c.gridx = 1;	
-			c.gridy = 3;
+			c.gridy = 4;
 			c.fill  = GridBagConstraints.HORIZONTAL;
 					txtEditorial = new JTextField( 10 );
 			panelDatosLibro.add( txtEditorial , c );
 				// FIN EDITORIAL //
 			
 			c.gridx = 0;	
-			c.gridy = 4;
+			c.gridy = 5;
 			c.fill  = GridBagConstraints.HORIZONTAL;
 			JLabel	lblAsignatura = new JLabel( "Asignatura: " );
 					lblAsignatura.setFont( Fonts.fontTitleBorder );
 			panelDatosLibro.add( lblAsignatura , c );
 			c.gridx = 1;	
-			c.gridy = 4;
+			c.gridy = 5;
 			c.fill  = GridBagConstraints.HORIZONTAL;
 					txtAsignatura = new JTextField( 10 );
 			panelDatosLibro.add( txtAsignatura , c );
 				// FIN ASIGNATURA //
 			c.gridx = 0;	
-			c.gridy = 5;
+			c.gridy = 6;
 			c.fill  = GridBagConstraints.HORIZONTAL;
 			JLabel	lblEstadoLib = new JLabel( "Estado: " );
 					lblEstadoLib.setFont( Fonts.fontTitleBorder );
 			panelDatosLibro.add( lblEstadoLib , c );
 			c.gridx = 1;	
-			c.gridy = 5;
+			c.gridy = 6;
 			c.fill  = GridBagConstraints.HORIZONTAL;
 					cmbEstados = new JComboBox<EstadoLibro>( EstadoLibro.cargarModeloCombo() );
 			panelDatosLibro.add( cmbEstados , c);
@@ -173,11 +190,14 @@ public class GestorLibros extends JFrame{
 			panelGeneralLibro.add( panelDatosLibro );	
 			
 			// ================= FIN PANEL DATOS ================= //
+			
 		
 		// PANEL BOTONES + IMAGEN  //
 			JPanel	panelBotonesImagen = new JPanel();
+					panelBotonesImagen.setBackground( Colors.transparentShy );
 					panelBotonesImagen.setLayout( new BoxLayout( panelBotonesImagen , BoxLayout.Y_AXIS ) );
 			JPanel	panelBotones = new JPanel();	
+					panelBotones.setBackground( Colors.transparentShy );
 					botonAñadir = new JButton( "Añadir" );
 					botonAñadir.setFocusable( false );
 					botonBorrar = new JButton( "Borrar" );
@@ -195,16 +215,20 @@ public class GestorLibros extends JFrame{
 			JLabel	lblImagen = new JLabel( new ImageIcon( "img/imgGestorLibros.png" ) );
 					panelBotonesImagen.add( lblImagen );
 			JPanel	panelVolver = new JPanel();	
+					panelVolver.setBackground( Colors.transparentShy );
 					panelVolver.setPreferredSize( new Dimension( 200 , 75 ) );
 			JButton	cerrar = new JButton("Volver");
-					panelVolver.add( cerrar )	;
-		panelGeneralLibro.add( panelBotonesImagen );	
+					panelVolver.add( cerrar );
+					
+			// ================= FIN PANEL BOTONES + IMAGEN ================= //
+					
+					
+		panelGeneralLibro.add( panelBotonesImagen );
+		
+		
 		this.getContentPane().add( listaLibros );
 		this.getContentPane().add( panelGeneralLibro );
 		this.getContentPane().add( panelVolver );
-		
-		
-		
 		
 		
 	}

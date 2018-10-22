@@ -15,7 +15,7 @@ import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import controllers.alumnos.ControladorAlumnosOrig;
+import controllers.alumnos.ControladorAlumnos;
 import controllers.alumnos.ControladorAlumnosMouse;
 import models.Alumno;
 import resources.borders.Borders;
@@ -128,9 +128,9 @@ public class GestorAlumnos extends JFrame {
 		private void listeners() {
 				// ACTION LISTENER'S \\
 				ControladorAlumnosMouse.setManager(this);
-				ControladorAlumnosOrig st = ControladorAlumnosOrig.instancia();
+				ControladorAlumnos st = ControladorAlumnos.instancia();
 				ControladorAlumnosMouse coAlMo = ControladorAlumnosMouse.instancia();
-				ControladorAlumnosOrig.setManager(this);
+				ControladorAlumnos.setManager(this);
 			/*	botonAltas.addActionListener( st ); 		// BotonAltas
 				botonVolver.addActionListener( st ); 		// BotonVolver
 				botonListar.addActionListener( st ); 		// BotonListar

@@ -12,6 +12,7 @@ import java.sql.SQLException;
 
 import javax.swing.JOptionPane;
 
+import controller.mainMenu.ControladorMainMenu;
 import interfaces.Login;
 import interfaces.MainMenu;
 import models.ConexionMySql;
@@ -47,6 +48,11 @@ public class ControladorLogin {
 				String id = log.getTxt().getText();
 				
 				main = MainMenu.instancia();
+				
+				ControladorMainMenu.instancia().setMain(main);
+				
+				ControladorMainMenu.instancia().iniciar();
+				
 				log.dispose();
 				
 				if( id.equals("") ) {

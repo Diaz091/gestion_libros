@@ -15,7 +15,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import controllers.alumnos.ControladorAlumnosOrig;
+import controllers.alumnos.ControladorAlumnos;
 import resources.colors.Colors;
 import resources.fonts.Fonts;
 import resources.imageTest.ImageTest;
@@ -110,7 +110,7 @@ public class MainMenu extends JFrame {
 							// Listener Para el BotonAlumnos, el cual abrira BookManager. 
 							// El cual se encargade gestionar los alumnos.
 							
-								ControladorAlumnosOrig stC = ControladorAlumnosOrig.instancia()	;
+								ControladorAlumnos stC = ControladorAlumnos.instancia()	;
 							//	stC.setMain(this);
 							//	botonAlumnos.addActionListener( stC );
 							//	botonLibros.addActionListener( stC );

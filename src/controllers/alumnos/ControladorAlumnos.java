@@ -10,6 +10,7 @@ import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 
+import controller.mainMenu.ControladorMainMenu;
 import models.Alumno;
 import models.ConexionMySql;
 import models.DataResource;
@@ -17,12 +18,11 @@ import models.DataResource;
 import interfaces.MainMenu;
 import interfaces.GestorAlumnos;
 
-public class ControladorAlumnos implements ActionListener{
+public class ControladorAlumnos{
 	private static ControladorAlumnos INSTANCIA;
 	
 	private static GestorAlumnos stManager;
 	private Connection conMysql;
-	private MainMenu main;
 	
 	public static ControladorAlumnos instancia() {
 		if ( INSTANCIA == null ) 
@@ -31,29 +31,60 @@ public class ControladorAlumnos implements ActionListener{
 	}
 		
 	private ControladorAlumnos() {}
+	public void iniciar() {
+		volver();
+		eventos();
+	}
+	
+	private void volver() {
 		
-	public void setMain( MainMenu mainM ) {
-		this.main = mainM;
-	}	
+		stManager.getBotonVolver().addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				ControladorMainMenu.instancia().setMain( MainMenu.instancia());
+				MainMenu.instancia().setVisible( true );
+				stManager.dispose();
+				
+			}
+		});
+	}
 
 	public static void setManager( GestorAlumnos stuM ) {
 		stManager = stuM;
 	}
 	
+	public void eventos() {
+		
+		stManager.getBotonAltas().addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				if( stManager.getPanelConsultas().isVisible()) 
+					stManager.getPanelConsultas().setVisible( false );
+				stManager.getPanelInicio().setVisible( false );
+				stManager.getPanelAltas().setVisible( true );
+			
+				
+			}
+		});
+		
+		
+	}
+	/*
 	@Override
 	public void actionPerformed( ActionEvent e ) {
 	
-			if( ( JButton ) e.getSource() == stManager.getBotonVolver() ) {
-				instancia().setMain( MainMenu.instancia() );
-				stManager.dispose();
-			}
+			
 			// LISTENER PARA DAR DE ALTA ALUMNOS EN LA BASE DE DATOS \\
 					if( ( JButton ) e.getSource() == stManager.getBotonAltas() ) {
 						if( stManager.getPanelConsultas().isVisible()) 
 								stManager.getPanelConsultas().setVisible( false );
 							
 							stManager.getPanelAltas().setVisible( true );
-						}		
+						}	
+							
 					// BOTON AÑADIR ALUMNO | AÑADE UN ALUMNO A LA BASE DE DATOS
 					if( ( JButton ) e.getSource() == stManager.getBotonGuardar() ) {
 						PreparedStatement	ps;
@@ -110,7 +141,7 @@ public class ControladorAlumnos implements ActionListener{
 						
 					}
 					
-			}
+			}*/
 
 	public GestorAlumnos getStManager() {
 		return stManager;

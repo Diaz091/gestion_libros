@@ -3,8 +3,8 @@ package controller.mainMenu;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import controllers.alumnos.ControladorAlumnos2;
 import controllers.alumnos.ControladorAlumnos;
-import controllers.alumnos.ControladorAlumnosOrig;
 import interfaces.GestorAlumnos;
 import interfaces.MainMenu;
 
@@ -29,10 +29,12 @@ public class ControladorMainMenu {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				ControladorAlumnosOrig.setManager( GestorAlumnos.instancia() );
-				ControladorAlumnosOrig.instancia().iniciar();
+				ControladorAlumnos.setManager( GestorAlumnos.instancia() );
+				
+				ControladorAlumnos.instancia().iniciar();
+				
 				main.dispose();
-				ControladorAlumnosOrig.instancia().getStManager().getPanelInicio().setVisible(false);
+				ControladorAlumnos.instancia().getStManager().getPanelInicio().setVisible(true);
 			}
 		});
 		

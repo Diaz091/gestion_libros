@@ -10,7 +10,6 @@ import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 
-import controller.mainMenu.ControladorMainMenu;
 import models.Alumno;
 import models.ConexionMySql;
 import models.DataResource;
@@ -18,49 +17,36 @@ import models.DataResource;
 import interfaces.MainMenu;
 import interfaces.GestorAlumnos;
 
-public class ControladorAlumnosOrig{
-	private static ControladorAlumnosOrig INSTANCIA;
+public class ControladorAlumnos2 implements ActionListener{
+	private static ControladorAlumnos2 INSTANCIA;
 	
 	private static GestorAlumnos stManager;
 	private Connection conMysql;
+	private MainMenu main;
 	
-	public static ControladorAlumnosOrig instancia() {
+	public static ControladorAlumnos2 instancia() {
 		if ( INSTANCIA == null ) 
-			INSTANCIA =  new ControladorAlumnosOrig();
+			INSTANCIA =  new ControladorAlumnos2();
 		return INSTANCIA;
 	}
 		
-	private ControladorAlumnosOrig() {
+	private ControladorAlumnos2() {}
 		
-	}
-	public void iniciar() {
-		cerrar();
-	}
-	
-	
-	
-	
-	private void cerrar() {
-		
-		stManager.getBotonVolver().addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				ControladorMainMenu.instancia().setMain( MainMenu.instancia());
-				stManager.dispose();
-				
-			}
-		});
-	}
+	public void setMain( MainMenu mainM ) {
+		this.main = mainM;
+	}	
 
 	public static void setManager( GestorAlumnos stuM ) {
 		stManager = stuM;
 	}
-	/*
+	
 	@Override
 	public void actionPerformed( ActionEvent e ) {
 	
-			
+			if( ( JButton ) e.getSource() == stManager.getBotonVolver() ) {
+				instancia().setMain( MainMenu.instancia() );
+				stManager.dispose();
+			}
 			// LISTENER PARA DAR DE ALTA ALUMNOS EN LA BASE DE DATOS \\
 					if( ( JButton ) e.getSource() == stManager.getBotonAltas() ) {
 						if( stManager.getPanelConsultas().isVisible()) 
@@ -124,7 +110,7 @@ public class ControladorAlumnosOrig{
 						
 					}
 					
-			}*/
+			}
 
 	public GestorAlumnos getStManager() {
 		return stManager;
