@@ -3,9 +3,10 @@ package controller.mainMenu;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import controllers.alumnos.ControladorAlumnos2;
+import controller.gestorLibros.ControladorLibros;
 import controllers.alumnos.ControladorAlumnos;
 import interfaces.GestorAlumnos;
+import interfaces.GestorLibros;
 import interfaces.MainMenu;
 
 public class ControladorMainMenu {
@@ -32,9 +33,21 @@ public class ControladorMainMenu {
 				ControladorAlumnos.setManager( GestorAlumnos.instancia() );
 				
 				ControladorAlumnos.instancia().iniciar();
-				
 				main.dispose();
 				ControladorAlumnos.instancia().getStManager().getPanelInicio().setVisible(true);
+			}
+		});
+		
+		main.getBotonLibros().addActionListener( new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				ControladorLibros.instancia().setGestorLibros( new GestorLibros());
+				
+				ControladorLibros.instancia().iniciar();
+				
+				main.dispose();
+				
 			}
 		});
 		

@@ -17,6 +17,7 @@ public class Alumno {
 
 	@Override
 	public String toString() {
+		//return String.format("%10s , %15s , %15s", dni , apell_1 , nombre);
 		return dni + ", " +apell_1 + ", " + nombre ;
 	}
 

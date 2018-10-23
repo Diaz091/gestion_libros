@@ -5,11 +5,8 @@ import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 import javax.swing.BoxLayout;
-import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -35,12 +32,11 @@ public class GestorLibros extends JFrame{
 	private static final long serialVersionUID = -3702218765809391813L;
 	
 	private JTextField									txtCodigo	, txtISBN	 	, txtTitulo 	,  txtAutor  , txtEditorial , txtAsignatura; 
-	private JButton										botonAñadir , botonBorrar	, botonListar;
-	private DefaultListModel 		< Libro > 			modeloListaLibros;
+	private JButton										botonAñadir , botonBorrar	, botonListar	,  botonCerrar;
 	private JList 					< Libro >			listaLibros;
 	private JComboBox				< EstadoLibro > 	cmbEstados;
 	
-	GestorLibros(){
+	public GestorLibros(){
 		ImageTest imgBack = new ImageTest( "img/try4.jpg" );
 		this.setContentPane( imgBack );
 		components();
@@ -77,8 +73,7 @@ public class GestorLibros extends JFrame{
 	private void dibujarInterior() {
 
 		// LISTA PARA VISUALIZAR LIBROS, TANTO LOS QUE ESTÁN EN LA BBDD CÓMO LOS QUE SERÁN AÑADIDOS. //
-			modeloListaLibros = new DefaultListModel<Libro>();
-			listaLibros = new JList<Libro>( modeloListaLibros );
+			listaLibros = new JList<Libro>(  );
 			listaLibros.setPreferredSize( new Dimension( 745 , 205));
 			listaLibros.setBorder( Borders.border[ 8 ] );
 			listaLibros.setBackground( Colors.transparentShy );
@@ -105,8 +100,8 @@ public class GestorLibros extends JFrame{
 			c.gridx = 1;
 			c.gridy = 0;
 			c.fill  = GridBagConstraints.HORIZONTAL;
-					txtISBN = new JTextField( 10 );
-			panelDatosLibro.add( txtISBN , c );
+					txtCodigo = new JTextField( 10 );
+			panelDatosLibro.add( txtCodigo , c );
 				//	FIN CODIGO //
 			
 			c.gridx = 0;
@@ -217,25 +212,71 @@ public class GestorLibros extends JFrame{
 			JPanel	panelVolver = new JPanel();	
 					panelVolver.setBackground( Colors.transparentShy );
 					panelVolver.setPreferredSize( new Dimension( 200 , 75 ) );
-			JButton	cerrar = new JButton("Volver");
-					panelVolver.add( cerrar );
+			botonCerrar = new JButton( "Volver" );
+					panelVolver.add( botonCerrar );
 					
 			// ================= FIN PANEL BOTONES + IMAGEN ================= //
 					
-					
 		panelGeneralLibro.add( panelBotonesImagen );
-		
 		
 		this.getContentPane().add( listaLibros );
 		this.getContentPane().add( panelGeneralLibro );
 		this.getContentPane().add( panelVolver );
 		
-		
+	}
+
+	// ================= GETTERS ================= //
+	
+	public JButton getBotonAñadir() {
+		return botonAñadir;
+	}
+
+	public JButton getBotonBorrar() {
+		return botonBorrar;
+	}
+
+	public JButton getBotonListar() {
+		return botonListar;
+	}
+
+	public JButton getBotonCerrar() {
+		return botonCerrar;
+	}
+
+	
+	public JTextField getTxtCodigo() {
+		return txtCodigo;
+	}
+
+	public JTextField getTxtISBN() {
+		return txtISBN;
+	}
+
+	public JTextField getTxtTitulo() {
+		return txtTitulo;
+	}
+
+	public JTextField getTxtAutor() {
+		return txtAutor;
+	}
+
+	public JTextField getTxtEditorial() {
+		return txtEditorial;
+	}
+
+	public JTextField getTxtAsignatura() {
+		return txtAsignatura;
+	}
+
+	public JComboBox<EstadoLibro> getCmbEstados() {
+		return cmbEstados;
+	}
+
+	public JList<Libro> getListaLibros() {
+		return listaLibros;
 	}
 	
-	public static void main(String[] args) {
-		new GestorLibros();
-
-	}
+	
+	
 
 }

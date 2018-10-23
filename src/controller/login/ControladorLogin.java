@@ -66,12 +66,11 @@ public class ControladorLogin {
 						ResultSet rs = ps.executeQuery();
 						
 						while( rs.next() ) {
-							
-								if(rs.getString( "apellido" ) != null ) {
-									main.getBienvenida().setText( main.getBienvenida().getText() + rs.getString( "nombre" ) + " " + rs.getString( "apellido" ) );	
-								}else {
-									main.getBienvenida().setText( main.getBienvenida().getText() + rs.getString( "nombre" ) );
-								}
+							if(rs.getString( "apellido" ) != null ) {
+								main.getBienvenida().setText( main.getBienvenida().getText() + rs.getString( "nombre" ) + " " + rs.getString( "apellido" ) );	
+							}else {
+								main.getBienvenida().setText( main.getBienvenida().getText() + rs.getString( "nombre" ) );
+							}
 						}
 							
 						rs.close();

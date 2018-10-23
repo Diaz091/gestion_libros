@@ -254,6 +254,10 @@ public class MainMenu extends JFrame {
 		public JButton getBotonSalir() {
 			return botonSalir;
 		}
+		
+		public JButton getBotonLibros() {
+			return botonLibros;
+		}
 
 		
 

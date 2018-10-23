@@ -16,7 +16,6 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import controllers.alumnos.ControladorAlumnos;
-import controllers.alumnos.ControladorAlumnosMouse;
 import models.Alumno;
 import resources.borders.Borders;
 import resources.colors.Colors;
@@ -127,9 +126,8 @@ public class GestorAlumnos extends JFrame {
 		
 		private void listeners() {
 				// ACTION LISTENER'S \\
-				ControladorAlumnosMouse.setManager(this);
+				
 				ControladorAlumnos st = ControladorAlumnos.instancia();
-				ControladorAlumnosMouse coAlMo = ControladorAlumnosMouse.instancia();
 				ControladorAlumnos.setManager(this);
 			/*	botonAltas.addActionListener( st ); 		// BotonAltas
 				botonVolver.addActionListener( st ); 		// BotonVolver
