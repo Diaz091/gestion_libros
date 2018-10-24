@@ -1,4 +1,5 @@
-package controllers.alumnos;
+package controller.alumnos;
+/*package controllers.alumnos;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -117,4 +118,4 @@ public class ControladorAlumnos2 implements ActionListener{
 	}
 	
 	}
-
+*/

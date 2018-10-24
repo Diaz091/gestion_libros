@@ -3,8 +3,8 @@ package controller.mainMenu;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import controller.alumnos.ControladorAlumnos;
 import controller.gestorLibros.ControladorLibros;
-import controllers.alumnos.ControladorAlumnos;
 import interfaces.GestorAlumnos;
 import interfaces.GestorLibros;
 import interfaces.MainMenu;

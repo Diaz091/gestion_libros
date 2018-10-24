@@ -1,4 +1,4 @@
-package controllers.alumnos;
+package controller.alumnos;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -9,7 +9,6 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 import javax.swing.DefaultListModel;
-import javax.swing.JButton;
 import javax.swing.JOptionPane;
 
 import controller.mainMenu.ControladorMainMenu;
@@ -31,14 +30,13 @@ public class ControladorAlumnos{
 			INSTANCIA =  new ControladorAlumnos();
 		return INSTANCIA;
 	}
-		
+	
 	private ControladorAlumnos() {}
 	
 	public void iniciar() {
 		volver();
 		eventos();
 	}
-	
 	private void volver() {
 		stManager.getBotonVolver().addActionListener( new ActionListener() {
 			
@@ -47,7 +45,6 @@ public class ControladorAlumnos{
 				ControladorMainMenu.instancia().setMain( MainMenu.instancia() );
 				MainMenu.instancia().setVisible( true );
 				stManager.dispose();
-				
 			}
 		});
 	}
@@ -90,7 +87,6 @@ public class ControladorAlumnos{
 								ps.setString( 3 , stManager.getTextoApellido().getText() );
 								ps.setString( 4 , stManager.getTextoApellido_2().getText() );
 						JOptionPane.showMessageDialog(null, "El alumno " + stManager.getTextoNombre().getText() + " se añadio correctamente.");
-						
 					}
 					ps.executeUpdate();
 					conMysql.close();
@@ -155,10 +151,10 @@ public class ControladorAlumnos{
 		// =========== FIN MÉTODO EVENTOS =========== //
 	}
 	
+	
+	// =========== GETTER'S =========== // 
 	public GestorAlumnos getStManager() {
 		return stManager;
 	}
-	
-
 }
 

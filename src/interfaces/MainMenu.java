@@ -15,7 +15,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import controllers.alumnos.ControladorAlumnos;
+import controller.alumnos.ControladorAlumnos;
 import resources.colors.Colors;
 import resources.fonts.Fonts;
 import resources.imageTest.ImageTest;

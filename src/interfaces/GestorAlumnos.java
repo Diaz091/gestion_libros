@@ -15,7 +15,7 @@ import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import controllers.alumnos.ControladorAlumnos;
+import controller.alumnos.ControladorAlumnos;
 import models.Alumno;
 import resources.borders.Borders;
 import resources.colors.Colors;
